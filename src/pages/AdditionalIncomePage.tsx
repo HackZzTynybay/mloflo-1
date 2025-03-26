@@ -34,7 +34,7 @@ const AdditionalIncomePage = () => {
           Do you have any additional sources of income?
         </h1>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-2xl mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-2xl mb-12">
           <SelectionCard
             title="Yes"
             icon={<YesIcon selected={selectedOption === 'yes'} />}

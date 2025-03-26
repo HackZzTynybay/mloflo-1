@@ -5,6 +5,7 @@ import { ThemeProvider } from 'next-themes';
 import Index from './pages/Index';
 import AdditionalRealEstatePropertiesPage from './pages/AdditionalRealEstatePropertiesPage';
 import AddAdditionalAssetsPage from './pages/AddAdditionalAssetsPage';
+import ChooseOtherAssetsPage from './pages/ChooseOtherAssetsPage';
 import OtherAssetsPage from './pages/OtherAssetsPage';
 import AssetsPage from './pages/AssetsPage';
 import AssetDetailPage from './pages/AssetDetailPage';
@@ -18,12 +19,11 @@ import DeclarationsPage from './pages/DeclarationsPage';
 import IncomePage from './pages/IncomePage';
 import AddMoreIncomeSourcesPage from './pages/AddMoreIncomeSourcesPage';
 import NotFound from './pages/NotFound';
-import ChooseOtherAssetsPage from './pages/ChooseOtherAssetsPage';
 
 function App() {
   return (
-    <div className="App">
-      <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
+    <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+      <div className="App">
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
@@ -47,8 +47,8 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
-      </ThemeProvider>
-    </div>
+      </div>
+    </ThemeProvider>
   );
 }
 

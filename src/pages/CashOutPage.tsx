@@ -7,7 +7,7 @@ import YesIcon from '../components/icons/YesIcon';
 import NoIcon from '../components/icons/NoIcon';
 import { Button } from '@/components/ui/button';
 
-const PropertyFoundPage = () => {
+const CashOutPage = () => {
   const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
@@ -18,24 +18,23 @@ const PropertyFoundPage = () => {
   const handleNext = () => {
     if (selectedOption) {
       if (selectedOption === 'yes') {
-        navigate('/property-address');
+        navigate('/cash-out-amount');
       } else {
-        // Navigate to the same page for now (property address) even if No is selected
-        navigate('/property-address');
+        navigate('/refinance-property-address');
       }
     }
   };
 
   return (
     <Layout 
-      currentStep={8} 
+      currentStep={11} 
       totalSteps={15} 
       title="Loan & Property"
     >
       <div className="flex flex-col items-center justify-between flex-grow w-full max-w-3xl mx-auto py-8">
         <div className="w-full">
           <h1 className="text-2xl font-bold mb-10 text-center">
-            Have you found the property?
+            Are you looking to take cash out?
           </h1>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mb-10">
@@ -59,7 +58,7 @@ const PropertyFoundPage = () => {
           <Button 
             variant="outline" 
             className="bg-gray-200 hover:bg-gray-300 border-none rounded-full px-10 py-2"
-            onClick={() => navigate('/property-use')}
+            onClick={() => navigate('/down-payment')}
           >
             Back
           </Button>
@@ -78,4 +77,4 @@ const PropertyFoundPage = () => {
   );
 };
 
-export default PropertyFoundPage;
+export default CashOutPage;

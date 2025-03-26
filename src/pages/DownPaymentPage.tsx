@@ -13,7 +13,7 @@ const DownPaymentPage = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate('/'); // Navigate back to home after the flow is complete
+    navigate('/cash-out'); // Navigate to the Cash Out page
   };
 
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,7 +35,7 @@ const DownPaymentPage = () => {
   return (
     <Layout 
       currentStep={10} 
-      totalSteps={10} 
+      totalSteps={15} 
       title="Loan & Property"
     >
       <div className="flex flex-col items-center justify-center flex-grow w-full max-w-xl mx-auto py-8">

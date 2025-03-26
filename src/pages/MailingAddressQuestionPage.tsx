@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout';
 import { Button } from '@/components/ui/button';
-import YesIcon from '@/components/icons/YesIcon';
-import NoIcon from '@/components/icons/NoIcon';
+import ThumbUpIcon from '@/components/icons/ThumbUpIcon';
+import ThumbDownIcon from '@/components/icons/ThumbDownIcon';
 import SelectionCard from '@/components/SelectionCard';
 
 const MailingAddressQuestionPage = () => {
@@ -35,13 +35,13 @@ const MailingAddressQuestionPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-2xl mb-12">
           <SelectionCard
             title="Yes"
-            icon={<YesIcon selected={selectedOption === 'yes'} />}
+            icon={<ThumbUpIcon selected={selectedOption === 'yes'} />}
             selected={selectedOption === 'yes'}
             onClick={() => handleOptionClick('yes')}
           />
           <SelectionCard
             title="No"
-            icon={<NoIcon selected={selectedOption === 'no'} />}
+            icon={<ThumbDownIcon selected={selectedOption === 'no'} />}
             selected={selectedOption === 'no'}
             onClick={() => handleOptionClick('no')}
           />

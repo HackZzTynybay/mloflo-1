@@ -13,7 +13,7 @@ const IconWrapper: React.FC<IconWrapperProps> = ({
   className = ""
 }) => {
   return (
-    <div className={`flex items-center justify-center ${className}`}>
+    <div className={`flex items-center justify-center w-full h-full ${className}`}>
       {children}
     </div>
   );

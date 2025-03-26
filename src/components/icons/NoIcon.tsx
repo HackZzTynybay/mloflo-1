@@ -12,7 +12,7 @@ const NoIcon: React.FC<NoIconProps> = ({ selected = false, className = "" }) => 
     <ThumbsDown 
       size={64} 
       strokeWidth={2} 
-      className={`${selected ? 'text-mloflo-blue' : 'text-gray-500'} ${className}`}
+      className={`${selected ? 'text-mloflo-blue' : 'text-mloflo-blue'} ${className}`}
     />
   );
 };

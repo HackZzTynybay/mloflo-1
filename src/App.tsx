@@ -1,7 +1,8 @@
+
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from 'next-themes';
-import Index from './pages/IndexPage';
+import Index from './pages/Index';
 import AdditionalRealEstatePropertiesPage from './pages/AdditionalRealEstatePropertiesPage';
 import AddAdditionalAssetsPage from './pages/AddAdditionalAssetsPage';
 import OtherAssetsPage from './pages/OtherAssetsPage';
@@ -16,7 +17,7 @@ import SexPage from './pages/SexPage';
 import DeclarationsPage from './pages/DeclarationsPage';
 import IncomePage from './pages/IncomePage';
 import AddMoreIncomeSourcesPage from './pages/AddMoreIncomeSourcesPage';
-import NotFound from './pages/NotFoundPage';
+import NotFound from './pages/NotFound';
 import ChooseOtherAssetsPage from './pages/ChooseOtherAssetsPage';
 
 function App() {

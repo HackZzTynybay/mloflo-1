@@ -2,16 +2,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout';
-import SelectionCard from '../components/SelectionCard';
-import YesIcon from '../components/icons/YesIcon';
-import NoIcon from '../components/icons/NoIcon';
 import { Button } from '@/components/ui/button';
+import YesIcon from '@/components/icons/YesIcon';
+import NoIcon from '@/components/icons/NoIcon';
+import SelectionCard from '@/components/SelectionCard';
 
 const AdditionalRealEstatePropertiesPage = () => {
   const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
-  const handleSelect = (option: string) => {
+  const handleOptionSelect = (option: string) => {
     setSelectedOption(option);
   };
 
@@ -19,14 +19,13 @@ const AdditionalRealEstatePropertiesPage = () => {
     if (selectedOption === 'yes') {
       navigate('/additional-property-primary');
     } else {
-      // If user selects "No", navigate to the next logical page in your flow
-      navigate('/personal-info'); // Adjust as needed for your flow
+      navigate('/personal-info');
     }
   };
 
   return (
     <Layout 
-      currentStep={6} 
+      currentStep={5} 
       totalSteps={10} 
       title="Real Estate"
     >
@@ -35,32 +34,34 @@ const AdditionalRealEstatePropertiesPage = () => {
           Do you own additional real estate properties?
         </h1>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-2xl mb-12">
           <SelectionCard
             title="Yes"
             icon={<YesIcon selected={selectedOption === 'yes'} />}
             selected={selectedOption === 'yes'}
-            onClick={() => handleSelect('yes')}
+            onClick={() => handleOptionSelect('yes')}
           />
           <SelectionCard
             title="No"
             icon={<NoIcon selected={selectedOption === 'no'} />}
             selected={selectedOption === 'no'}
-            onClick={() => handleSelect('no')}
+            onClick={() => handleOptionSelect('no')}
           />
         </div>
 
-        <div className="flex justify-center mt-auto">
+        <div className="flex justify-center mt-14">
           <Button 
+            type="button"
             variant="outline" 
             className="bg-gray-200 hover:bg-gray-300 border-none rounded-full px-10 py-2"
-            onClick={() => navigate(-1)}
+            onClick={() => navigate('/assets')}
           >
             Back
           </Button>
           
           {selectedOption && (
             <Button 
+              type="button"
               className="bg-mloflo-blue hover:bg-blue-700 ml-4 rounded-full px-10 py-2"
               onClick={handleNext}
             >

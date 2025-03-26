@@ -5,43 +5,37 @@ import Layout from '../components/Layout';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from "@/components/ui/label";
-import { CalendarIcon } from 'lucide-react';
 
-const ServiceExpirationPage = () => {
+const EmploymentPhonePage = () => {
   const navigate = useNavigate();
-  const [expirationDate, setExpirationDate] = useState('');
+  const [employerPhone, setEmployerPhone] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate('/income-information');
+    navigate('/additional-income');
   };
 
   return (
     <Layout 
-      currentStep={3} 
+      currentStep={4} 
       totalSteps={10} 
-      title="Personal Information"
+      title="Employment Information"
     >
       <div className="flex flex-col items-center justify-center flex-grow w-full max-w-xl mx-auto py-8">
         <h1 className="text-2xl font-bold mb-10 text-center">
-          What is the projected expiration date of service/tour?
+          What is your employer's phone number?
         </h1>
         
         <form onSubmit={handleSubmit} className="w-full space-y-6">
           <div className="mb-4">
-            <Label htmlFor="expirationDate">Expiration Date</Label>
-            <div className="relative mt-1">
-              <Input
-                id="expirationDate"
-                placeholder="MM-DD-YYYY"
-                value={expirationDate}
-                onChange={(e) => setExpirationDate(e.target.value)}
-                className="mt-1"
-              />
-              <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
-                <CalendarIcon size={16} />
-              </div>
-            </div>
+            <Label htmlFor="employerPhone">Employer Phone Number</Label>
+            <Input
+              id="employerPhone"
+              placeholder="(XXX) XXX-XXXX"
+              value={employerPhone}
+              onChange={(e) => setEmployerPhone(e.target.value)}
+              className="mt-1"
+            />
           </div>
 
           <div className="flex justify-center mt-10">
@@ -49,7 +43,7 @@ const ServiceExpirationPage = () => {
               type="button"
               variant="outline" 
               className="bg-gray-200 hover:bg-gray-300 border-none rounded-full px-10 py-2"
-              onClick={() => navigate('/military-service-details')}
+              onClick={() => navigate('/employment-address')}
             >
               Back
             </Button>
@@ -67,4 +61,4 @@ const ServiceExpirationPage = () => {
   );
 };
 
-export default ServiceExpirationPage;
+export default EmploymentPhonePage;

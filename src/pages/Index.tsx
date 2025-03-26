@@ -2,6 +2,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout';
+import { Button } from '@/components/ui/button';
 
 const Index = () => {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ const Index = () => {
           <h1 className="text-3xl font-bold mb-4">Hi Jess Morgan</h1>
           
           <p className="text-center mb-2 text-gray-700">
-            Your home ownership journey start with Loan Application.
+            Your home ownership journey starts with Loan Application.
           </p>
           <p className="text-center mb-6 text-gray-700 max-w-xl mx-auto">
             We are excited to help you with the purchase or refinance of your home. Please take a
@@ -37,12 +38,12 @@ const Index = () => {
             look forward to helping you.
           </p>
           
-          <button 
-            onClick={() => navigate('/borrowers')}
-            className="btn-primary mt-6"
+          <Button 
+            onClick={() => navigate('/loan-type')}
+            className="bg-mloflo-blue hover:bg-blue-700 text-white rounded-full px-6 py-2 mt-6"
           >
             Next
-          </button>
+          </Button>
         </div>
       </div>
     </Layout>

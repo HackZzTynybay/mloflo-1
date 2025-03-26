@@ -17,7 +17,7 @@ const AddAdditionalAssetsPage = () => {
 
   const handleNext = () => {
     if (selectedOption === 'yes') {
-      navigate('/assets');
+      navigate('/choose-other-assets');
     } else {
       navigate('/other-assets');
     }

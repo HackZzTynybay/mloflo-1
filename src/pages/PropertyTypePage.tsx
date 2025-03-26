@@ -39,28 +39,28 @@ const PropertyTypePage = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full mb-10">
             <SelectionCard 
               title="Single Family" 
-              icon={<SingleFamilyIcon selected={selectedPropertyType === 'single-family'} />}
+              icon={<SingleFamilyIcon selected={false} />}
               selected={selectedPropertyType === 'single-family'}
               onClick={() => handleSelect('single-family')}
             />
 
             <SelectionCard 
               title="Condominium" 
-              icon={<CondoIcon selected={selectedPropertyType === 'condo'} />}
+              icon={<CondoIcon selected={false} />}
               selected={selectedPropertyType === 'condo'}
               onClick={() => handleSelect('condo')}
             />
 
             <SelectionCard 
               title="Townhouse" 
-              icon={<TownhouseIcon selected={selectedPropertyType === 'townhouse'} />}
+              icon={<TownhouseIcon selected={false} />}
               selected={selectedPropertyType === 'townhouse'}
               onClick={() => handleSelect('townhouse')}
             />
 
             <SelectionCard 
               title="Multifamily" 
-              icon={<MultifamilyIcon selected={selectedPropertyType === 'multifamily'} />}
+              icon={<MultifamilyIcon selected={false} />}
               selected={selectedPropertyType === 'multifamily'}
               onClick={() => handleSelect('multifamily')}
             />
@@ -68,7 +68,7 @@ const PropertyTypePage = () => {
             <SelectionCard 
               title="Manufactured/
 Mobile Home" 
-              icon={<MobileHomeIcon selected={selectedPropertyType === 'mobile-home'} />}
+              icon={<MobileHomeIcon selected={false} />}
               selected={selectedPropertyType === 'mobile-home'}
               onClick={() => handleSelect('mobile-home')}
             />

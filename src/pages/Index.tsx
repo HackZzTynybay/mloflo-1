@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout';
@@ -39,7 +38,7 @@ const Index = () => {
           </p>
           
           <Button 
-            onClick={() => navigate('/loan-type')}
+            onClick={() => navigate('/borrowers')}
             className="bg-mloflo-blue hover:bg-blue-700 text-white rounded-full px-6 py-2 mt-6"
           >
             Next

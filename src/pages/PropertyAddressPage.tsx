@@ -39,17 +39,17 @@ const PropertyAddressPage = () => {
           What is your property address?
         </h1>
         
-        <form onSubmit={handleSubmit} className="w-full space-y-6">
+        <form onSubmit={handleSubmit} className="w-full space-y-8">
           {!showExtendedForm ? (
-            <div className="relative">
-              <Label htmlFor="address">Property Address</Label>
+            <div className="relative mb-6">
+              <Label htmlFor="address" className="block mb-2 text-gray-700">Property Address</Label>
               <div className="relative">
                 <Input
                   id="address"
                   placeholder="Property Address"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
-                  className="mt-1 pr-10"
+                  className="mt-1 pr-10 py-6"
                   onClick={toggleExtendedForm}
                 />
                 <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
@@ -59,15 +59,15 @@ const PropertyAddressPage = () => {
             </div>
           ) : (
             <>
-              <div>
-                <Label htmlFor="address">Property Address</Label>
+              <div className="mb-6">
+                <Label htmlFor="address" className="block mb-2 text-gray-700">Property Address</Label>
                 <div className="relative">
                   <Input
                     id="address"
                     placeholder="Property Address"
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
-                    className="mt-1 pr-10"
+                    className="mt-1 pr-10 py-6"
                   />
                   <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
                     <MapPin size={16} />
@@ -75,57 +75,57 @@ const PropertyAddressPage = () => {
                 </div>
               </div>
 
-              <div>
-                <Label htmlFor="city">City</Label>
+              <div className="mb-6">
+                <Label htmlFor="city" className="block mb-2 text-gray-700">City</Label>
                 <Input
                   id="city"
                   placeholder="City"
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
-                  className="mt-1"
+                  className="mt-1 py-6"
                 />
               </div>
 
-              <div>
-                <Label htmlFor="state">State</Label>
+              <div className="mb-6">
+                <Label htmlFor="state" className="block mb-2 text-gray-700">State</Label>
                 <Input
                   id="state"
                   placeholder="State"
                   value={state}
                   onChange={(e) => setState(e.target.value)}
-                  className="mt-1"
+                  className="mt-1 py-6"
                 />
               </div>
 
-              <div>
-                <Label htmlFor="aptUnit">Apt/Unit</Label>
+              <div className="mb-6">
+                <Label htmlFor="aptUnit" className="block mb-2 text-gray-700">Apt/Unit</Label>
                 <Input
                   id="aptUnit"
                   placeholder="Apt/Unit"
                   value={aptUnit}
                   onChange={(e) => setAptUnit(e.target.value)}
-                  className="mt-1"
+                  className="mt-1 py-6"
                 />
               </div>
 
-              <div>
-                <Label htmlFor="zipCode">Zip Code</Label>
+              <div className="mb-6">
+                <Label htmlFor="zipCode" className="block mb-2 text-gray-700">Zip Code</Label>
                 <Input
                   id="zipCode"
                   placeholder="Zip Code"
                   value={zipCode}
                   onChange={(e) => setZipCode(e.target.value)}
-                  className="mt-1"
+                  className="mt-1 py-6"
                 />
               </div>
             </>
           )}
 
-          <div>
-            <Label className="block mb-2">
+          <div className="mb-8">
+            <Label className="block mb-4 text-gray-700">
               If you occupy the property, will you set aside space within the property to operate your business? (e.g., daycare facility, medical office, beauty/barber shop)?
             </Label>
-            <RadioGroup value={businessSpace} onValueChange={setBusinessSpace} className="flex gap-8">
+            <RadioGroup value={businessSpace} onValueChange={setBusinessSpace} className="flex gap-8 mt-2">
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="yes" id="business-yes" />
                 <Label htmlFor="business-yes">Yes</Label>
@@ -137,11 +137,11 @@ const PropertyAddressPage = () => {
             </RadioGroup>
           </div>
 
-          <div>
-            <Label className="block mb-2">
+          <div className="mb-8">
+            <Label className="block mb-4 text-gray-700">
               Do you want to add gift or grants you have been given or will receive for this loan?
             </Label>
-            <RadioGroup value={addGift} onValueChange={setAddGift} className="flex gap-8">
+            <RadioGroup value={addGift} onValueChange={setAddGift} className="flex gap-8 mt-2">
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="yes" id="gift-yes" />
                 <Label htmlFor="gift-yes">Yes</Label>

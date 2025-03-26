@@ -23,7 +23,7 @@ const LoanTypePage = () => {
 
   return (
     <Layout 
-      currentStep={1} 
+      currentStep={3} 
       totalSteps={10} 
       title="Loan & Property"
     >
@@ -36,14 +36,14 @@ const LoanTypePage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mb-10">
             <SelectionCard 
               title="Purchase" 
-              icon={<PurchaseIcon selected={selectedLoanType === 'purchase'} />}
+              icon={<PurchaseIcon selected={false} />}
               selected={selectedLoanType === 'purchase'}
               onClick={() => handleSelect('purchase')}
             />
 
             <SelectionCard 
               title="Refinance" 
-              icon={<RefinanceIcon selected={selectedLoanType === 'refinance'} />}
+              icon={<RefinanceIcon selected={false} />}
               selected={selectedLoanType === 'refinance'}
               onClick={() => handleSelect('refinance')}
             />
@@ -54,7 +54,7 @@ const LoanTypePage = () => {
           <Button 
             variant="outline" 
             className="bg-gray-200 hover:bg-gray-300 border-none rounded-full px-10 py-2"
-            onClick={() => navigate('/')}
+            onClick={() => navigate('/co-borrower')}
           >
             Back
           </Button>

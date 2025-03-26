@@ -80,12 +80,12 @@ const IncomeSourcesPage = () => {
       totalSteps={10} 
       title="Employment"
     >
-      <div className="flex flex-col items-center justify-center flex-grow w-full max-w-6xl mx-auto py-6 px-4">
-        <h1 className="text-2xl font-bold mb-8 text-center">
+      <div className="flex flex-col items-center justify-center flex-grow w-full max-w-7xl mx-auto py-8 px-6">
+        <h1 className="text-2xl font-bold mb-10 text-center">
           Choose your additional sources of income.
         </h1>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 w-full mb-10">
           {incomeSources.map((source) => (
             <SelectionCard
               key={source.id}
@@ -97,7 +97,7 @@ const IncomeSourcesPage = () => {
           ))}
         </div>
 
-        <div className="flex justify-center mt-10">
+        <div className="flex justify-center mt-12">
           <Button 
             type="button"
             variant="outline" 

@@ -34,7 +34,7 @@ const AdditionalEmploymentPage = () => {
           Would you like to add any additional employment?
         </h1>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-xl mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-xl mb-10">
           <SelectionCard
             title="Yes"
             icon={<YesIcon selected={selectedOption === 'yes'} />}

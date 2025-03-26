@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -35,19 +38,12 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -96,6 +92,52 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-inter antialiased;
   }
+  
+  html, body, #root {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+@layer components {
+  .number-outline {
+    stroke: theme('colors.mloflo.blue');
+    stroke-width: 2px;
+    fill: none;
+  }
+  
+  .number-card {
+    @apply relative flex flex-col items-center justify-center p-6 border border-gray-200 rounded-lg 
+    transition-all duration-300 hover:shadow-md hover:border-mloflo-blue cursor-pointer;
+  }
+  
+  .number-card.selected {
+    @apply border-mloflo-blue bg-blue-50;
+  }
+  
+  .helper-circle {
+    @apply flex items-center justify-center w-6 h-6 rounded-full bg-mloflo-blue text-white text-xs;
+  }
+  
+  .form-input {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-mloflo-blue focus:border-transparent transition duration-200;
+  }
+  
+  .btn-primary {
+    @apply px-6 py-2 bg-mloflo-blue text-white rounded-full hover:bg-blue-700 transition duration-200;
+  }
+  
+  .btn-secondary {
+    @apply px-6 py-2 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 transition duration-200;
+  }
+  
+  .btn-outline {
+    @apply px-6 py-2 border border-mloflo-blue text-mloflo-blue rounded-full hover:bg-blue-50 transition duration-200;
+  }
+}
+
+.font-inter {
+  font-family: 'Inter', sans-serif;
 }

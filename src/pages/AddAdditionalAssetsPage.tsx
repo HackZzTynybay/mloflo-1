@@ -5,7 +5,7 @@ import Layout from '../components/Layout';
 import { Button } from '@/components/ui/button';
 import SelectionCard from '@/components/SelectionCard';
 
-const AddMoreIncomeSourcesPage = () => {
+const AddAdditionalAssetsPage = () => {
   const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
@@ -15,21 +15,21 @@ const AddMoreIncomeSourcesPage = () => {
 
   const handleNext = () => {
     if (selectedOption === 'yes') {
-      navigate('/income-sources');
-    } else {
       navigate('/assets');
+    } else {
+      navigate('/other-assets');
     }
   };
 
   return (
     <Layout 
-      currentStep={4} 
+      currentStep={5} 
       totalSteps={10} 
-      title="Employment"
+      title="Assets"
     >
       <div className="flex flex-col items-center justify-center flex-grow w-full max-w-3xl mx-auto py-8">
         <h1 className="text-2xl font-bold mb-10 text-center">
-          Would you like to add more additional income sources?
+          Would you like to add any additional assets?
         </h1>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-2xl mb-12">
@@ -60,7 +60,7 @@ const AddMoreIncomeSourcesPage = () => {
             type="button"
             variant="outline" 
             className="bg-gray-200 hover:bg-gray-300 border-none rounded-full px-10 py-2"
-            onClick={() => navigate('/child-support-details')}
+            onClick={() => navigate('/assets')}
           >
             Back
           </Button>
@@ -80,4 +80,4 @@ const AddMoreIncomeSourcesPage = () => {
   );
 };
 
-export default AddMoreIncomeSourcesPage;
+export default AddAdditionalAssetsPage;

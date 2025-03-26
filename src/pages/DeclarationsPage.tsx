@@ -107,7 +107,7 @@ const DeclarationsPage = () => {
             type="button"
             variant="outline" 
             className="bg-gray-200 hover:bg-gray-300 border-none rounded-full px-10 py-2"
-            onClick={() => navigate('/add-more-income-sources')}
+            onClick={() => navigate('/other-assets')}
           >
             Back
           </Button>

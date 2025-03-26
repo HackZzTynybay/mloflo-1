@@ -62,6 +62,15 @@ import AdditionalIncomeSourcesPage from "./pages/AdditionalIncomeSourcesPage";
 import IncomeSourcesPage from "./pages/IncomeSourcesPage";
 import ChildSupportDetailsPage from "./pages/ChildSupportDetailsPage";
 import AddMoreIncomeSourcesPage from "./pages/AddMoreIncomeSourcesPage";
+
+// Asset & Financial Pages
+import AssetsPage from "./pages/AssetsPage";
+import AssetDetailPage from "./pages/AssetDetailPage";
+import AddAdditionalAssetsPage from "./pages/AddAdditionalAssetsPage";
+import OtherAssetsPage from "./pages/OtherAssetsPage";
+import AssetsInformationPage from "./pages/AssetsInformationPage";
+
+// Final Pages
 import DeclarationsPage from "./pages/DeclarationsPage";
 import ReviewSubmitPage from "./pages/ReviewSubmitPage";
 
@@ -131,6 +140,15 @@ const App = () => (
           <Route path="/income-sources" element={<IncomeSourcesPage />} />
           <Route path="/child-support-details" element={<ChildSupportDetailsPage />} />
           <Route path="/add-more-income-sources" element={<AddMoreIncomeSourcesPage />} />
+          
+          {/* Assets Flow */}
+          <Route path="/assets" element={<AssetsPage />} />
+          <Route path="/asset-detail/:assetId" element={<AssetDetailPage />} />
+          <Route path="/add-additional-assets" element={<AddAdditionalAssetsPage />} />
+          <Route path="/other-assets" element={<OtherAssetsPage />} />
+          <Route path="/assets-information" element={<AssetsInformationPage />} />
+          
+          {/* Final Flow */}
           <Route path="/declarations-page" element={<DeclarationsPage />} />
           <Route path="/review-submit" element={<ReviewSubmitPage />} />
 

@@ -3,7 +3,8 @@ import React from 'react';
 import Logo from './Logo';
 import ProgressBar from './ProgressBar';
 import HelpCircle from './HelpCircle';
-import { Sun, LogOut } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
+import { LogOut } from 'lucide-react';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -19,7 +20,7 @@ const Layout: React.FC<LayoutProps> = ({
   title = "Welcome"
 }) => {
   return (
-    <div className="min-h-screen max-w-6xl mx-auto bg-white p-6 flex flex-col animate-fade-in">
+    <div className="min-h-screen max-w-6xl mx-auto bg-background text-foreground p-6 flex flex-col animate-fade-in">
       <header className="flex justify-between items-center mb-6">
         <Logo />
         <div className="flex items-center space-x-2">
@@ -27,9 +28,7 @@ const Layout: React.FC<LayoutProps> = ({
           <ProgressBar currentStep={currentStep} totalSteps={totalSteps} />
         </div>
         <div className="flex items-center space-x-2">
-          <button className="p-2 rounded-full bg-blue-100 text-mloflo-blue hover:bg-blue-200 transition-colors">
-            <Sun size={20} />
-          </button>
+          <ThemeToggle />
           <button className="flex items-center space-x-2 bg-mloflo-blue text-white px-4 py-2 rounded-full hover:bg-blue-700 transition-colors">
             <LogOut size={16} />
             <span>Logout</span>

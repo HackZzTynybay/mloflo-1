@@ -17,7 +17,7 @@ const SelfEmploymentDetailsPage = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate('/additional-income');
+    navigate('/additional-employment');
   };
 
   return (
@@ -28,7 +28,7 @@ const SelfEmploymentDetailsPage = () => {
     >
       <div className="flex flex-col items-center justify-center flex-grow w-full max-w-2xl mx-auto py-8">
         <h1 className="text-2xl font-bold mb-10 text-center">
-          Additional self employment.
+          Tell us about your self employment.
         </h1>
         
         <form onSubmit={handleSubmit} className="w-full space-y-6">

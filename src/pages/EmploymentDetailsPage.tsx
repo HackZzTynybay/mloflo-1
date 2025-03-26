@@ -18,7 +18,7 @@ const EmploymentDetailsPage = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate('/employment-address');
+    navigate('/additional-employment');
   };
 
   return (

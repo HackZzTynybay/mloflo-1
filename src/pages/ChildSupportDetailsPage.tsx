@@ -2,13 +2,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout';
-import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { Button } from '@/components/ui/button';
+import { Label } from "@/components/ui/label";
 
 const ChildSupportDetailsPage = () => {
   const navigate = useNavigate();
-  const [income, setIncome] = useState('');
+  const [monthlyIncome, setMonthlyIncome] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,24 +21,24 @@ const ChildSupportDetailsPage = () => {
       totalSteps={10} 
       title="Employment"
     >
-      <div className="flex flex-col items-center justify-center flex-grow w-full max-w-2xl mx-auto py-8">
+      <div className="flex flex-col items-center justify-center flex-grow w-full max-w-xl mx-auto py-8">
         <h1 className="text-2xl font-bold mb-10 text-center">
           What is your monthly income for all child support?
         </h1>
         
         <form onSubmit={handleSubmit} className="w-full space-y-6">
-          <div>
-            <Label htmlFor="income">Monthly Support Income</Label>
-            <div className="relative mt-1">
+          <div className="space-y-2">
+            <Label htmlFor="monthlyIncome">Monthly Support Income</Label>
+            <div className="relative">
               <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
               <Input
-                id="income"
+                id="monthlyIncome"
                 placeholder="0.00"
                 type="number"
                 step="0.01"
                 min="0"
-                value={income}
-                onChange={(e) => setIncome(e.target.value)}
+                value={monthlyIncome}
+                onChange={(e) => setMonthlyIncome(e.target.value)}
                 className="pl-8"
               />
             </div>

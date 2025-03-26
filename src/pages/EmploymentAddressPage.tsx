@@ -31,7 +31,7 @@ const EmploymentAddressPage = () => {
         </h1>
         
         <form onSubmit={handleSubmit} className="w-full space-y-6">
-          <div className="mb-4">
+          <div className="space-y-2">
             <Label htmlFor="address">Employer Address</Label>
             <div className="relative">
               <Input
@@ -39,7 +39,7 @@ const EmploymentAddressPage = () => {
                 placeholder="Employer Address"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
-                className="mt-1"
+                className="pr-10"
               />
               <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
                 <MapPin size={16} />
@@ -47,36 +47,33 @@ const EmploymentAddressPage = () => {
             </div>
           </div>
 
-          <div className="mb-4">
+          <div className="space-y-2">
             <Label htmlFor="city">City</Label>
             <Input
               id="city"
               placeholder="City"
               value={city}
               onChange={(e) => setCity(e.target.value)}
-              className="mt-1"
             />
           </div>
 
-          <div className="mb-4">
+          <div className="space-y-2">
             <Label htmlFor="state">State</Label>
             <Input
               id="state"
               placeholder="State"
               value={state}
               onChange={(e) => setState(e.target.value)}
-              className="mt-1"
             />
           </div>
 
-          <div className="mb-4">
+          <div className="space-y-2">
             <Label htmlFor="zipCode">Zip Code</Label>
             <Input
               id="zipCode"
               placeholder="Zip Code"
               value={zipCode}
               onChange={(e) => setZipCode(e.target.value)}
-              className="mt-1"
             />
           </div>
 

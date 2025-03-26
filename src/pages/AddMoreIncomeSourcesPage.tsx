@@ -59,14 +59,15 @@ const AddMoreIncomeSourcesPage = () => {
             Back
           </Button>
           
-          <Button 
-            type="button"
-            className="bg-mloflo-blue hover:bg-blue-700 ml-4 rounded-full px-10 py-2"
-            onClick={handleNext}
-            disabled={!selectedOption}
-          >
-            Next
-          </Button>
+          {selectedOption && (
+            <Button 
+              type="button"
+              className="bg-mloflo-blue hover:bg-blue-700 ml-4 rounded-full px-10 py-2"
+              onClick={handleNext}
+            >
+              Next
+            </Button>
+          )}
         </div>
       </div>
     </Layout>

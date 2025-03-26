@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
@@ -117,9 +116,7 @@
     @apply border-mloflo-blue bg-blue-50;
   }
   
-  .helper-circle {
-    @apply flex items-center justify-center w-6 h-6 rounded-full bg-mloflo-blue text-white text-xs;
-  }
+  /* Remove the helper-circle class since we're now using an SVG component */
   
   .form-input {
     @apply w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-mloflo-blue focus:border-transparent transition duration-200;
@@ -135,6 +132,23 @@
   
   .btn-outline {
     @apply px-6 py-2 border border-mloflo-blue text-mloflo-blue rounded-full hover:bg-blue-50 transition duration-200;
+  }
+
+  /* Add responsive styles for the helper SVG */
+  @media (max-width: 480px) {
+    /* Extra Small Devices (Phones) */
+    .help-svg {
+      width: 40px;
+      height: 38px;
+    }
+  }
+  
+  @media (min-width: 481px) and (max-width: 767px) {
+    /* Small Devices (Large Phones) */
+    .help-svg {
+      width: 50px;
+      height: 48px;
+    }
   }
 }
 

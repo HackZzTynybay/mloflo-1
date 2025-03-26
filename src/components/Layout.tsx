@@ -2,6 +2,7 @@
 import React from 'react';
 import Logo from './Logo';
 import ProgressBar from './ProgressBar';
+import HelpCircle from './HelpCircle';
 import { Sun, LogOut } from 'lucide-react';
 
 interface LayoutProps {
@@ -41,7 +42,7 @@ const Layout: React.FC<LayoutProps> = ({
       </main>
       
       <footer className="flex justify-end mt-6">
-        <div className="helper-circle">?</div>
+        <HelpCircle />
       </footer>
     </div>
   );

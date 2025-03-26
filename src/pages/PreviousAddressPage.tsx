@@ -5,44 +5,43 @@ import Layout from '../components/Layout';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from "@/components/ui/label";
+import { MapPin } from 'lucide-react';
 
-const PropertyValuePage = () => {
+const PreviousAddressPage = () => {
   const navigate = useNavigate();
-  const [value, setValue] = useState('');
+  const [address, setAddress] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate('/personal-info'); // Navigate to the first personal info page
+    navigate('/mailing-address-question');
   };
-
-  const handleValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.replace(/[^\d.]/g, '');
-    setValue(value);
-  };
-
-  const formattedValue = value ? `$${parseFloat(value).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` : '$0.00';
 
   return (
     <Layout 
-      currentStep={15} 
-      totalSteps={15} 
-      title="Loan & Property"
+      currentStep={3} 
+      totalSteps={10} 
+      title="Personal Information"
     >
       <div className="flex flex-col items-center justify-center flex-grow w-full max-w-xl mx-auto py-8">
         <h1 className="text-2xl font-bold mb-10 text-center">
-          What is the current estimated property value?
+          What is your previous address since your current address is less than 2 years?
         </h1>
         
         <form onSubmit={handleSubmit} className="w-full space-y-6">
-          <div>
-            <Label htmlFor="value">Current Estimated Property Value</Label>
-            <Input
-              id="value"
-              placeholder="$0.00"
-              value={formattedValue}
-              onChange={handleValueChange}
-              className="mt-1"
-            />
+          <div className="mb-4">
+            <Label htmlFor="address">Property Address</Label>
+            <div className="relative">
+              <Input
+                id="address"
+                placeholder="Property Address"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                className="mt-1"
+              />
+              <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                <MapPin size={16} />
+              </div>
+            </div>
           </div>
 
           <div className="flex justify-center mt-10">
@@ -50,7 +49,7 @@ const PropertyValuePage = () => {
               type="button"
               variant="outline" 
               className="bg-gray-200 hover:bg-gray-300 border-none rounded-full px-10 py-2"
-              onClick={() => navigate('/additional-mortgage-balance')}
+              onClick={() => navigate('/mortgage-question')}
             >
               Back
             </Button>
@@ -68,4 +67,4 @@ const PropertyValuePage = () => {
   );
 };
 
-export default PropertyValuePage;
+export default PreviousAddressPage;

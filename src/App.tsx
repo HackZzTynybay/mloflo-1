@@ -30,6 +30,24 @@ import AdditionalMortgagePage from "./pages/AdditionalMortgagePage";
 import AdditionalMortgageBalancePage from "./pages/AdditionalMortgageBalancePage";
 import PropertyValuePage from "./pages/PropertyValuePage";
 
+// Personal Information Pages
+import PersonalInfoPage from "./pages/PersonalInfoPage";
+import ContactInfoPage from "./pages/ContactInfoPage";
+import CurrentAddressPage from "./pages/CurrentAddressPage";
+import AddressDurationPage from "./pages/AddressDurationPage";
+import PropertyRelationshipPage from "./pages/PropertyRelationshipPage";
+import MortgageQuestionPage from "./pages/MortgageQuestionPage";
+import PreviousAddressPage from "./pages/PreviousAddressPage";
+import MailingAddressQuestionPage from "./pages/MailingAddressQuestionPage";
+import MaritalStatusPage from "./pages/MaritalStatusPage";
+import TaxFilingStatusPage from "./pages/TaxFilingStatusPage";
+import DependentsQuestionPage from "./pages/DependentsQuestionPage";
+import DependentsCountPage from "./pages/DependentsCountPage";
+import DependentsAgesPage from "./pages/DependentsAgesPage";
+import MilitaryServicePage from "./pages/MilitaryServicePage";
+import MilitaryServiceDetailsPage from "./pages/MilitaryServiceDetailsPage";
+import ServiceExpirationPage from "./pages/ServiceExpirationPage";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -63,6 +81,24 @@ const App = () => (
           <Route path="/additional-mortgage" element={<AdditionalMortgagePage />} />
           <Route path="/additional-mortgage-balance" element={<AdditionalMortgageBalancePage />} />
           <Route path="/property-value" element={<PropertyValuePage />} />
+          
+          {/* Personal Information Flow */}
+          <Route path="/personal-info" element={<PersonalInfoPage />} />
+          <Route path="/contact-info" element={<ContactInfoPage />} />
+          <Route path="/current-address" element={<CurrentAddressPage />} />
+          <Route path="/address-duration" element={<AddressDurationPage />} />
+          <Route path="/property-relationship" element={<PropertyRelationshipPage />} />
+          <Route path="/mortgage-question" element={<MortgageQuestionPage />} />
+          <Route path="/previous-address" element={<PreviousAddressPage />} />
+          <Route path="/mailing-address-question" element={<MailingAddressQuestionPage />} />
+          <Route path="/marital-status" element={<MaritalStatusPage />} />
+          <Route path="/tax-filing-status" element={<TaxFilingStatusPage />} />
+          <Route path="/dependents-question" element={<DependentsQuestionPage />} />
+          <Route path="/dependents-count" element={<DependentsCountPage />} />
+          <Route path="/dependents-ages" element={<DependentsAgesPage />} />
+          <Route path="/military-service" element={<MilitaryServicePage />} />
+          <Route path="/military-service-details" element={<MilitaryServiceDetailsPage />} />
+          <Route path="/service-expiration" element={<ServiceExpirationPage />} />
           
           {/* Catch-all route */}
           <Route path="*" element={<NotFound />} />

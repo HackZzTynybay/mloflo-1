@@ -36,21 +36,21 @@ const LoanTypePage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mb-10">
             <SelectionCard 
               title="Purchase" 
-              icon={<PurchaseIcon selected={false} />}
+              icon={<PurchaseIcon selected={selectedLoanType === 'purchase'} />}
               selected={selectedLoanType === 'purchase'}
               onClick={() => handleSelect('purchase')}
             />
 
             <SelectionCard 
               title="Refinance" 
-              icon={<RefinanceIcon selected={false} />}
+              icon={<RefinanceIcon selected={selectedLoanType === 'refinance'} />}
               selected={selectedLoanType === 'refinance'}
               onClick={() => handleSelect('refinance')}
             />
           </div>
         </div>
 
-        <div className="flex justify-center mt-6 mb-4 w-full">
+        <div className="flex justify-center mt-auto mb-4 w-full">
           <Button 
             variant="outline" 
             className="bg-gray-200 hover:bg-gray-300 border-none rounded-full px-10 py-2"

@@ -29,10 +29,12 @@ const BorrowersPage = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             <div 
-              className={`number-card ${selectedOption === 1 ? 'selected' : ''}`}
+              className={`cursor-pointer border-2 rounded-lg p-4 flex flex-col items-center justify-center transition-colors ${
+                selectedOption === 1 ? 'border-mloflo-blue' : 'border-gray-200'
+              }`}
               onClick={() => handleSelect(1)}
             >
-              <NumberSvg number={1} selected={false} />
+              <NumberSvg number={1} selected={selectedOption === 1} />
               <div className="mt-4 text-center">
                 <p className="font-medium">Borrower</p>
                 <p className="text-sm text-gray-500">(My Self)</p>
@@ -40,30 +42,36 @@ const BorrowersPage = () => {
             </div>
             
             <div 
-              className={`number-card ${selectedOption === 2 ? 'selected' : ''}`}
+              className={`cursor-pointer border-2 rounded-lg p-4 flex flex-col items-center justify-center transition-colors ${
+                selectedOption === 2 ? 'border-mloflo-blue' : 'border-gray-200'
+              }`}
               onClick={() => handleSelect(2)}
             >
-              <NumberSvg number={2} selected={false} />
+              <NumberSvg number={2} selected={selectedOption === 2} />
               <div className="mt-4 text-center">
                 <p className="font-medium">Borrowers</p>
               </div>
             </div>
             
             <div 
-              className={`number-card ${selectedOption === 3 ? 'selected' : ''}`}
+              className={`cursor-pointer border-2 rounded-lg p-4 flex flex-col items-center justify-center transition-colors ${
+                selectedOption === 3 ? 'border-mloflo-blue' : 'border-gray-200'
+              }`}
               onClick={() => handleSelect(3)}
             >
-              <NumberSvg number={3} selected={false} />
+              <NumberSvg number={3} selected={selectedOption === 3} />
               <div className="mt-4 text-center">
                 <p className="font-medium">Borrowers</p>
               </div>
             </div>
             
             <div 
-              className={`number-card ${selectedOption === 4 ? 'selected' : ''}`}
+              className={`cursor-pointer border-2 rounded-lg p-4 flex flex-col items-center justify-center transition-colors ${
+                selectedOption === 4 ? 'border-mloflo-blue' : 'border-gray-200'
+              }`}
               onClick={() => handleSelect(4)}
             >
-              <NumberSvg number={4} selected={false} />
+              <NumberSvg number={4} selected={selectedOption === 4} />
               <div className="mt-4 text-center">
                 <p className="font-medium">Borrowers</p>
               </div>
@@ -71,7 +79,7 @@ const BorrowersPage = () => {
           </div>
         </div>
         
-        <div className="flex justify-center mt-6 mb-4 w-full">
+        <div className="flex justify-center mt-auto mb-4 w-full">
           <Button 
             variant="outline" 
             className="bg-gray-200 hover:bg-gray-300 border-none rounded-full px-10 py-2"

@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout';
 import { Button } from '@/components/ui/button';
-import ThumbUpIcon from '@/components/icons/ThumbUpIcon';
-import ThumbDownIcon from '@/components/icons/ThumbDownIcon';
+import YesIcon from '@/components/icons/YesIcon';
+import NoIcon from '@/components/icons/NoIcon';
 import SelectionCard from '@/components/SelectionCard';
 
 const AddMoreIncomeSourcesPage = () => {
@@ -19,6 +19,7 @@ const AddMoreIncomeSourcesPage = () => {
     if (selectedOption === 'yes') {
       navigate('/income-sources');
     } else {
+      // This is the end of the flow as specified
       navigate('/declarations-page');
     }
   };
@@ -37,13 +38,13 @@ const AddMoreIncomeSourcesPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-xl mb-10">
           <SelectionCard
             title="Yes"
-            icon={<ThumbUpIcon selected={selectedOption === 'yes'} />}
+            icon={<YesIcon selected={selectedOption === 'yes'} />}
             selected={selectedOption === 'yes'}
             onClick={() => handleOptionSelect('yes')}
           />
           <SelectionCard
             title="No"
-            icon={<ThumbDownIcon selected={selectedOption === 'no'} />}
+            icon={<NoIcon selected={selectedOption === 'no'} />}
             selected={selectedOption === 'no'}
             onClick={() => handleOptionSelect('no')}
           />

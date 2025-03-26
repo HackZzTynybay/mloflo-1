@@ -50,6 +50,30 @@ const IncomeSourcesPage = () => {
     }
   };
 
+  const incomeSources = [
+    { id: 'alimony', title: 'Alimony', icon: AlimonyIcon },
+    { id: 'auto-allowance', title: 'Automobile Allowance', icon: AutomobileAllowanceIcon },
+    { id: 'boarder-income', title: 'Boarder Income', icon: BoarderIncomeIcon },
+    { id: 'capital-gains', title: 'Capital Gains', icon: CapitalGainsIcon },
+    { id: 'child-support', title: 'Child Support', icon: ChildSupportIcon },
+    { id: 'disability', title: 'Disability', icon: DisabilityIcon },
+    { id: 'foster-care', title: 'Foster Care', icon: FosterCareIcon },
+    { id: 'housing-parsonage', title: 'Housing or Parsonage', icon: HousingParsonageIcon },
+    { id: 'interest-dividends', title: 'Interest and Dividends', icon: InterestDividendsIcon },
+    { id: 'mortgage-credit', title: 'Mortgage Credit Certificate', icon: MortgageCreditIcon },
+    { id: 'differential-payments', title: 'Mortgage Differential Payment', icon: DifferentialPaymentsIcon },
+    { id: 'notes-receivable', title: 'Notes Receivable', icon: ReceivableIcon },
+    { id: 'public-assistance', title: 'Public Assistance', icon: PublicAssistanceIcon },
+    { id: 'retirement', title: 'Retirement', icon: RetirementIcon },
+    { id: 'royalty-payments', title: 'Royalty Payments', icon: RoyaltyPaymentIcon },
+    { id: 'maintenance', title: 'Separate Maintenance', icon: MaintenanceIcon },
+    { id: 'social-security', title: 'Social Security', icon: SocialSecurityIcon },
+    { id: 'trust', title: 'Trust', icon: TrustIcon },
+    { id: 'unemployment-benefits', title: 'Unemployment Benefits', icon: UnemploymentBenefitsIcon },
+    { id: 'va-compensation', title: 'VA Compensation', icon: VACompensationIcon },
+    { id: 'other', title: 'Other', icon: OthersIcon },
+  ];
+
   return (
     <Layout 
       currentStep={4} 
@@ -62,132 +86,15 @@ const IncomeSourcesPage = () => {
         </h1>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full mb-8">
-          <SelectionCard
-            title="Alimony"
-            icon={<AlimonyIcon selected={selectedSources.includes('alimony')} />}
-            selected={selectedSources.includes('alimony')}
-            onClick={() => toggleSource('alimony')}
-          />
-          <SelectionCard
-            title="Automobile Allowance"
-            icon={<AutomobileAllowanceIcon selected={selectedSources.includes('auto-allowance')} />}
-            selected={selectedSources.includes('auto-allowance')}
-            onClick={() => toggleSource('auto-allowance')}
-          />
-          <SelectionCard
-            title="Boarder Income"
-            icon={<BoarderIncomeIcon selected={selectedSources.includes('boarder-income')} />}
-            selected={selectedSources.includes('boarder-income')}
-            onClick={() => toggleSource('boarder-income')}
-          />
-          <SelectionCard
-            title="Capital Gains"
-            icon={<CapitalGainsIcon selected={selectedSources.includes('capital-gains')} />}
-            selected={selectedSources.includes('capital-gains')}
-            onClick={() => toggleSource('capital-gains')}
-          />
-          <SelectionCard
-            title="Child Support"
-            icon={<ChildSupportIcon selected={selectedSources.includes('child-support')} />}
-            selected={selectedSources.includes('child-support')}
-            onClick={() => toggleSource('child-support')}
-          />
-          <SelectionCard
-            title="Disability"
-            icon={<DisabilityIcon selected={selectedSources.includes('disability')} />}
-            selected={selectedSources.includes('disability')}
-            onClick={() => toggleSource('disability')}
-          />
-          <SelectionCard
-            title="Foster Care"
-            icon={<FosterCareIcon selected={selectedSources.includes('foster-care')} />}
-            selected={selectedSources.includes('foster-care')}
-            onClick={() => toggleSource('foster-care')}
-          />
-          <SelectionCard
-            title="Housing or Parsonage"
-            icon={<HousingParsonageIcon selected={selectedSources.includes('housing-parsonage')} />}
-            selected={selectedSources.includes('housing-parsonage')}
-            onClick={() => toggleSource('housing-parsonage')}
-          />
-          <SelectionCard
-            title="Interest and Dividends"
-            icon={<InterestDividendsIcon selected={selectedSources.includes('interest-dividends')} />}
-            selected={selectedSources.includes('interest-dividends')}
-            onClick={() => toggleSource('interest-dividends')}
-          />
-          <SelectionCard
-            title="Mortgage Credit Certificate"
-            icon={<MortgageCreditIcon selected={selectedSources.includes('mortgage-credit')} />}
-            selected={selectedSources.includes('mortgage-credit')}
-            onClick={() => toggleSource('mortgage-credit')}
-          />
-          <SelectionCard
-            title="Mortgage Differential Payment"
-            icon={<DifferentialPaymentsIcon selected={selectedSources.includes('differential-payments')} />}
-            selected={selectedSources.includes('differential-payments')}
-            onClick={() => toggleSource('differential-payments')}
-          />
-          <SelectionCard
-            title="Notes Receivable"
-            icon={<ReceivableIcon selected={selectedSources.includes('notes-receivable')} />}
-            selected={selectedSources.includes('notes-receivable')}
-            onClick={() => toggleSource('notes-receivable')}
-          />
-          <SelectionCard
-            title="Public Assistance"
-            icon={<PublicAssistanceIcon selected={selectedSources.includes('public-assistance')} />}
-            selected={selectedSources.includes('public-assistance')}
-            onClick={() => toggleSource('public-assistance')}
-          />
-          <SelectionCard
-            title="Retirement"
-            icon={<RetirementIcon selected={selectedSources.includes('retirement')} />}
-            selected={selectedSources.includes('retirement')}
-            onClick={() => toggleSource('retirement')}
-          />
-          <SelectionCard
-            title="Royalty Payments"
-            icon={<RoyaltyPaymentIcon selected={selectedSources.includes('royalty-payments')} />}
-            selected={selectedSources.includes('royalty-payments')}
-            onClick={() => toggleSource('royalty-payments')}
-          />
-          <SelectionCard
-            title="Separate Maintenance"
-            icon={<MaintenanceIcon selected={selectedSources.includes('maintenance')} />}
-            selected={selectedSources.includes('maintenance')}
-            onClick={() => toggleSource('maintenance')}
-          />
-          <SelectionCard
-            title="Social Security"
-            icon={<SocialSecurityIcon selected={selectedSources.includes('social-security')} />}
-            selected={selectedSources.includes('social-security')}
-            onClick={() => toggleSource('social-security')}
-          />
-          <SelectionCard
-            title="Trust"
-            icon={<TrustIcon selected={selectedSources.includes('trust')} />}
-            selected={selectedSources.includes('trust')}
-            onClick={() => toggleSource('trust')}
-          />
-          <SelectionCard
-            title="Unemployment Benefits"
-            icon={<UnemploymentBenefitsIcon selected={selectedSources.includes('unemployment-benefits')} />}
-            selected={selectedSources.includes('unemployment-benefits')}
-            onClick={() => toggleSource('unemployment-benefits')}
-          />
-          <SelectionCard
-            title="VA Compensation"
-            icon={<VACompensationIcon selected={selectedSources.includes('va-compensation')} />}
-            selected={selectedSources.includes('va-compensation')}
-            onClick={() => toggleSource('va-compensation')}
-          />
-          <SelectionCard
-            title="Other"
-            icon={<OthersIcon selected={selectedSources.includes('other')} />}
-            selected={selectedSources.includes('other')}
-            onClick={() => toggleSource('other')}
-          />
+          {incomeSources.map((source) => (
+            <SelectionCard
+              key={source.id}
+              title={source.title}
+              icon={<source.icon selected={selectedSources.includes(source.id)} />}
+              selected={selectedSources.includes(source.id)}
+              onClick={() => toggleSource(source.id)}
+            />
+          ))}
         </div>
 
         <div className="flex justify-center mt-6">

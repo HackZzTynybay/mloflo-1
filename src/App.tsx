@@ -48,6 +48,21 @@ import MilitaryServicePage from "./pages/MilitaryServicePage";
 import MilitaryServiceDetailsPage from "./pages/MilitaryServiceDetailsPage";
 import ServiceExpirationPage from "./pages/ServiceExpirationPage";
 
+// Employment Pages
+import EmploymentStatusPage from "./pages/EmploymentStatusPage";
+import EmploymentDetailsPage from "./pages/EmploymentDetailsPage";
+import SelfEmploymentDetailsPage from "./pages/SelfEmploymentDetailsPage";
+import AdditionalEmploymentPage from "./pages/AdditionalEmploymentPage";
+import AdditionalEmploymentDetailsPage from "./pages/AdditionalEmploymentDetailsPage";
+import AdditionalEmploymentTypePage from "./pages/AdditionalEmploymentTypePage";
+import AdditionalSelfEmploymentDetailsPage from "./pages/AdditionalSelfEmploymentDetailsPage";
+import PreviousEmploymentTypePage from "./pages/PreviousEmploymentTypePage";
+import PreviousEmploymentDetailsPage from "./pages/PreviousEmploymentDetailsPage";
+import AdditionalIncomeSourcesPage from "./pages/AdditionalIncomeSourcesPage";
+import IncomeSourcesPage from "./pages/IncomeSourcesPage";
+import ChildSupportDetailsPage from "./pages/ChildSupportDetailsPage";
+import AddMoreIncomeSourcesPage from "./pages/AddMoreIncomeSourcesPage";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -100,6 +115,21 @@ const App = () => (
           <Route path="/military-service-details" element={<MilitaryServiceDetailsPage />} />
           <Route path="/service-expiration" element={<ServiceExpirationPage />} />
           
+          {/* Employment Flow */}
+          <Route path="/employment-status" element={<EmploymentStatusPage />} />
+          <Route path="/employment-details" element={<EmploymentDetailsPage />} />
+          <Route path="/self-employment-details" element={<SelfEmploymentDetailsPage />} />
+          <Route path="/additional-employment" element={<AdditionalEmploymentPage />} />
+          <Route path="/additional-employment-details" element={<AdditionalEmploymentDetailsPage />} />
+          <Route path="/additional-employment-type" element={<AdditionalEmploymentTypePage />} />
+          <Route path="/additional-self-employment-details" element={<AdditionalSelfEmploymentDetailsPage />} />
+          <Route path="/previous-employment-type" element={<PreviousEmploymentTypePage />} />
+          <Route path="/previous-employment-details" element={<PreviousEmploymentDetailsPage />} />
+          <Route path="/additional-income" element={<AdditionalIncomeSourcesPage />} />
+          <Route path="/income-sources" element={<IncomeSourcesPage />} />
+          <Route path="/child-support-details" element={<ChildSupportDetailsPage />} />
+          <Route path="/add-more-income-sources" element={<AddMoreIncomeSourcesPage />} />
+
           {/* Catch-all route */}
           <Route path="*" element={<NotFound />} />
         </Routes>

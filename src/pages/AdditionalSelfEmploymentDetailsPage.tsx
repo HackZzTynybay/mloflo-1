@@ -5,20 +5,19 @@ import Layout from '../components/Layout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { CalendarIcon, MapPin } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 
-const EmploymentDetailsPage = () => {
+const AdditionalSelfEmploymentDetailsPage = () => {
   const navigate = useNavigate();
-  const [employerName, setEmployerName] = useState('');
+  const [businessName, setBusinessName] = useState('');
   const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
-  const [position, setPosition] = useState('');
-  const [startDate, setStartDate] = useState('');
+  const [ownershipShare, setOwnershipShare] = useState<'less' | 'more' | null>(null);
   const [income, setIncome] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate('/employment-address');
+    navigate('/additional-income');
   };
 
   return (
@@ -29,17 +28,17 @@ const EmploymentDetailsPage = () => {
     >
       <div className="flex flex-col items-center justify-center flex-grow w-full max-w-2xl mx-auto py-8">
         <h1 className="text-2xl font-bold mb-10 text-center">
-          Tell us about your current employment.
+          Additional self employment.
         </h1>
         
         <form onSubmit={handleSubmit} className="w-full space-y-6">
           <div>
-            <Label htmlFor="employerName">Employer or Business Name</Label>
+            <Label htmlFor="businessName">Business Name</Label>
             <Input
-              id="employerName"
-              placeholder="Employer or Business Name"
-              value={employerName}
-              onChange={(e) => setEmployerName(e.target.value)}
+              id="businessName"
+              placeholder="Business Name"
+              value={businessName}
+              onChange={(e) => setBusinessName(e.target.value)}
               className="mt-1"
             />
           </div>
@@ -73,29 +72,24 @@ const EmploymentDetailsPage = () => {
           </div>
 
           <div>
-            <Label htmlFor="position">Position or Title</Label>
-            <Input
-              id="position"
-              placeholder="Position or Title"
-              value={position}
-              onChange={(e) => setPosition(e.target.value)}
-              className="mt-1"
-            />
-          </div>
-
-          <div>
-            <Label htmlFor="startDate">Start Date</Label>
-            <div className="relative">
-              <Input
-                id="startDate"
-                placeholder="MM-DD-YYYY"
-                value={startDate}
-                onChange={(e) => setStartDate(e.target.value)}
-                className="mt-1 pr-10"
-              />
-              <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
-                <CalendarIcon size={18} />
-              </div>
+            <Label htmlFor="ownership">Ownership Share*</Label>
+            <div className="flex gap-4 mt-2">
+              <Button
+                type="button"
+                variant={ownershipShare === 'less' ? 'default' : 'outline'}
+                className={`w-full ${ownershipShare === 'less' ? 'bg-mloflo-blue' : 'border-gray-300'}`}
+                onClick={() => setOwnershipShare('less')}
+              >
+                Less than 25%
+              </Button>
+              <Button
+                type="button"
+                variant={ownershipShare === 'more' ? 'default' : 'outline'}
+                className={`w-full ${ownershipShare === 'more' ? 'bg-mloflo-blue' : 'border-gray-300'}`}
+                onClick={() => setOwnershipShare('more')}
+              >
+                Over 25%
+              </Button>
             </div>
           </div>
 
@@ -121,7 +115,7 @@ const EmploymentDetailsPage = () => {
               type="button"
               variant="outline" 
               className="bg-gray-200 hover:bg-gray-300 border-none rounded-full px-10 py-2"
-              onClick={() => navigate('/employment-status')}
+              onClick={() => navigate('/additional-employment-type')}
             >
               Back
             </Button>
@@ -139,4 +133,4 @@ const EmploymentDetailsPage = () => {
   );
 };
 
-export default EmploymentDetailsPage;
+export default AdditionalSelfEmploymentDetailsPage;

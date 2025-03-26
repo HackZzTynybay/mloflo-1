@@ -5,20 +5,18 @@ import Layout from '../components/Layout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { CalendarIcon, MapPin } from 'lucide-react';
+import { CalendarIcon } from 'lucide-react';
 
-const EmploymentDetailsPage = () => {
+const AdditionalEmploymentDetailsPage = () => {
   const navigate = useNavigate();
   const [employerName, setEmployerName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [address, setAddress] = useState('');
   const [position, setPosition] = useState('');
   const [startDate, setStartDate] = useState('');
   const [income, setIncome] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate('/employment-address');
+    navigate('/additional-income');
   };
 
   return (
@@ -29,47 +27,19 @@ const EmploymentDetailsPage = () => {
     >
       <div className="flex flex-col items-center justify-center flex-grow w-full max-w-2xl mx-auto py-8">
         <h1 className="text-2xl font-bold mb-10 text-center">
-          Tell us about your current employment.
+          Additional employment?
         </h1>
         
         <form onSubmit={handleSubmit} className="w-full space-y-6">
           <div>
-            <Label htmlFor="employerName">Employer or Business Name</Label>
+            <Label htmlFor="employerName">Employer Name</Label>
             <Input
               id="employerName"
-              placeholder="Employer or Business Name"
+              placeholder="Employer Name"
               value={employerName}
               onChange={(e) => setEmployerName(e.target.value)}
               className="mt-1"
             />
-          </div>
-
-          <div>
-            <Label htmlFor="phone">Phone</Label>
-            <Input
-              id="phone"
-              placeholder="Phone"
-              type="tel"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              className="mt-1"
-            />
-          </div>
-
-          <div>
-            <Label htmlFor="address">Address</Label>
-            <div className="relative">
-              <Input
-                id="address"
-                placeholder="Address"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-                className="mt-1 pr-10"
-              />
-              <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
-                <MapPin size={18} />
-              </div>
-            </div>
           </div>
 
           <div>
@@ -100,7 +70,7 @@ const EmploymentDetailsPage = () => {
           </div>
 
           <div>
-            <Label htmlFor="income">Gross Monthly Income before Deductions</Label>
+            <Label htmlFor="income">Monthly Income</Label>
             <div className="relative mt-1">
               <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
               <Input
@@ -121,7 +91,7 @@ const EmploymentDetailsPage = () => {
               type="button"
               variant="outline" 
               className="bg-gray-200 hover:bg-gray-300 border-none rounded-full px-10 py-2"
-              onClick={() => navigate('/employment-status')}
+              onClick={() => navigate('/additional-employment')}
             >
               Back
             </Button>
@@ -139,4 +109,4 @@ const EmploymentDetailsPage = () => {
   );
 };
 
-export default EmploymentDetailsPage;
+export default AdditionalEmploymentDetailsPage;

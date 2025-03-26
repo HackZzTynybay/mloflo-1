@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Layout from '../components/Layout';
@@ -58,6 +59,59 @@ const AssetDetailPage = () => {
     setValue('');
   };
 
+  // Get appropriate account type options based on assetId
+  const getAccountTypeOptions = () => {
+    switch (assetId) {
+      case 'checking-savings':
+        return (
+          <>
+            <SelectItem value="checking">Checking</SelectItem>
+            <SelectItem value="savings">Savings</SelectItem>
+          </>
+        );
+      case 'money-market':
+        return <SelectItem value="money-market">Money Market</SelectItem>;
+      case 'certificate-of-deposit':
+        return <SelectItem value="certificate-of-deposit">Certificate of Deposit</SelectItem>;
+      case 'mutual-fund':
+        return (
+          <>
+            <SelectItem value="stock-fund">Stock Fund</SelectItem>
+            <SelectItem value="bond-fund">Bond Fund</SelectItem>
+            <SelectItem value="balanced-fund">Balanced Fund</SelectItem>
+            <SelectItem value="index-fund">Index Fund</SelectItem>
+          </>
+        );
+      case 'stocks':
+        return (
+          <>
+            <SelectItem value="common-stock">Common Stock</SelectItem>
+            <SelectItem value="preferred-stock">Preferred Stock</SelectItem>
+          </>
+        );
+      case 'bonds':
+        return (
+          <>
+            <SelectItem value="municipal-bond">Municipal Bond</SelectItem>
+            <SelectItem value="corporate-bond">Corporate Bond</SelectItem>
+            <SelectItem value="government-bond">Government Bond</SelectItem>
+          </>
+        );
+      case 'retirement':
+        return (
+          <>
+            <SelectItem value="401k">401(k)</SelectItem>
+            <SelectItem value="ira">IRA</SelectItem>
+            <SelectItem value="roth-ira">Roth IRA</SelectItem>
+            <SelectItem value="sep">SEP</SelectItem>
+            <SelectItem value="pension">Pension</SelectItem>
+          </>
+        );
+      default:
+        return <SelectItem value="standard">Standard</SelectItem>;
+    }
+  };
+
   return (
     <Layout 
       currentStep={5} 
@@ -80,10 +134,7 @@ const AssetDetailPage = () => {
                 <SelectValue placeholder="Account Type" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="checking">Checking</SelectItem>
-                <SelectItem value="savings">Savings</SelectItem>
-                <SelectItem value="money-market">Money Market</SelectItem>
-                <SelectItem value="certificate-of-deposit">Certificate of Deposit</SelectItem>
+                {getAccountTypeOptions()}
               </SelectContent>
             </Select>
           </div>

@@ -16,7 +16,7 @@ const SelectionCard: React.FC<SelectionCardProps> = ({
 }) => {
   return (
     <div 
-      className={`relative flex flex-col items-center justify-center p-6 rounded-lg transition-all duration-300 cursor-pointer border hover:shadow-md hover:border-mloflo-blue ${selected ? 'border-mloflo-blue bg-blue-50' : 'border-gray-200'}`}
+      className={`relative flex flex-col items-center justify-center p-6 rounded-lg transition-all duration-300 cursor-pointer ${selected ? 'border-2 border-mloflo-blue bg-blue-50' : 'border border-gray-200'}`}
       onClick={onClick}
     >
       <div className="mb-4">

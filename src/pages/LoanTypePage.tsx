@@ -23,7 +23,7 @@ const LoanTypePage = () => {
 
   return (
     <Layout 
-      currentStep={2} 
+      currentStep={1} 
       totalSteps={10} 
       title="Loan & Property"
     >

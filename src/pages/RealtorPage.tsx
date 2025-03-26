@@ -39,14 +39,14 @@ const RealtorPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mb-10">
           <SelectionCard 
             title="Yes" 
-            icon={<YesIcon selected={selectedOption === 'yes'} />}
+            icon={<YesIcon />}
             selected={selectedOption === 'yes'}
             onClick={() => handleSelect('yes')}
           />
 
           <SelectionCard 
             title="No" 
-            icon={<NoIcon selected={selectedOption === 'no'} />}
+            icon={<NoIcon />}
             selected={selectedOption === 'no'}
             onClick={() => handleSelect('no')}
           />

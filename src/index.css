@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
@@ -113,10 +114,8 @@
   }
   
   .number-card.selected {
-    @apply border-mloflo-blue bg-blue-50;
+    @apply border-2 border-mloflo-blue bg-blue-50;
   }
-  
-  /* Remove the helper-circle class since we're now using an SVG component */
   
   .form-input {
     @apply w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-mloflo-blue focus:border-transparent transition duration-200;
@@ -148,6 +147,30 @@
     .help-svg {
       width: 50px;
       height: 48px;
+    }
+  }
+
+  /* Medium Devices (Tablets) */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .help-svg {
+      width: 60px;
+      height: 58px;
+    }
+  }
+
+  /* Large Devices (Laptops & Small Desktops) */
+  @media (min-width: 1025px) and (max-width: 1366px) {
+    .help-svg {
+      width: 70px;
+      height: 67px;
+    }
+  }
+
+  /* Extra Large Devices (Desktops & Large Screens) */
+  @media (min-width: 1367px) {
+    .help-svg {
+      width: 75px;
+      height: 72px;
     }
   }
 }

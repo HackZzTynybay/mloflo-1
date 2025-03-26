@@ -45,7 +45,11 @@ const IncomeSourcesPage = () => {
   };
 
   const handleNext = () => {
-    navigate('/declarations-page');
+    if (selectedSources.includes('child_support')) {
+      navigate('/child-support-details');
+    } else {
+      navigate('/add-more-income-sources');
+    }
   };
 
   return (

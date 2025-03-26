@@ -19,7 +19,6 @@ const AddMoreIncomeSourcesPage = () => {
     if (selectedOption === 'yes') {
       navigate('/income-sources');
     } else {
-      // This is the end of the flow as specified
       navigate('/declarations-page');
     }
   };

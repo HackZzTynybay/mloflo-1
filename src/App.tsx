@@ -62,6 +62,8 @@ import AdditionalIncomeSourcesPage from "./pages/AdditionalIncomeSourcesPage";
 import IncomeSourcesPage from "./pages/IncomeSourcesPage";
 import ChildSupportDetailsPage from "./pages/ChildSupportDetailsPage";
 import AddMoreIncomeSourcesPage from "./pages/AddMoreIncomeSourcesPage";
+import DeclarationsPage from "./pages/DeclarationsPage";
+import ReviewSubmitPage from "./pages/ReviewSubmitPage";
 
 const queryClient = new QueryClient();
 
@@ -129,6 +131,8 @@ const App = () => (
           <Route path="/income-sources" element={<IncomeSourcesPage />} />
           <Route path="/child-support-details" element={<ChildSupportDetailsPage />} />
           <Route path="/add-more-income-sources" element={<AddMoreIncomeSourcesPage />} />
+          <Route path="/declarations-page" element={<DeclarationsPage />} />
+          <Route path="/review-submit" element={<ReviewSubmitPage />} />
 
           {/* Catch-all route */}
           <Route path="*" element={<NotFound />} />

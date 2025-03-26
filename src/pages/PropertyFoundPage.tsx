@@ -32,28 +32,30 @@ const PropertyFoundPage = () => {
       totalSteps={10} 
       title="Loan & Property"
     >
-      <div className="flex flex-col items-center justify-center flex-grow w-full max-w-3xl mx-auto py-8">
-        <h1 className="text-2xl font-bold mb-10 text-center">
-          Have you found the property?
-        </h1>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mb-10">
-          <SelectionCard 
-            title="Yes" 
-            icon={<YesIcon selected={selectedOption === 'yes'} />}
-            selected={selectedOption === 'yes'}
-            onClick={() => handleSelect('yes')}
-          />
+      <div className="flex flex-col items-center justify-between flex-grow w-full max-w-3xl mx-auto py-8">
+        <div className="w-full">
+          <h1 className="text-2xl font-bold mb-10 text-center">
+            Have you found the property?
+          </h1>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mb-10">
+            <SelectionCard 
+              title="Yes" 
+              icon={<YesIcon selected={selectedOption === 'yes'} />}
+              selected={selectedOption === 'yes'}
+              onClick={() => handleSelect('yes')}
+            />
 
-          <SelectionCard 
-            title="No" 
-            icon={<NoIcon selected={selectedOption === 'no'} />}
-            selected={selectedOption === 'no'}
-            onClick={() => handleSelect('no')}
-          />
+            <SelectionCard 
+              title="No" 
+              icon={<NoIcon selected={selectedOption === 'no'} />}
+              selected={selectedOption === 'no'}
+              onClick={() => handleSelect('no')}
+            />
+          </div>
         </div>
 
-        <div className="mt-auto">
+        <div className="flex justify-center mt-6 mb-4 w-full">
           <Button 
             variant="outline" 
             className="bg-gray-200 hover:bg-gray-300 border-none rounded-full px-10 py-2"

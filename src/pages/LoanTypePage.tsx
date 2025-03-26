@@ -27,28 +27,30 @@ const LoanTypePage = () => {
       totalSteps={10} 
       title="Loan & Property"
     >
-      <div className="flex flex-col items-center justify-center flex-grow w-full max-w-3xl mx-auto py-8">
-        <h1 className="text-2xl font-bold mb-10 text-center">
-          What type of home loan are you looking for?
-        </h1>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mb-10">
-          <SelectionCard 
-            title="Purchase" 
-            icon={<PurchaseIcon selected={selectedLoanType === 'purchase'} />}
-            selected={selectedLoanType === 'purchase'}
-            onClick={() => handleSelect('purchase')}
-          />
+      <div className="flex flex-col items-center justify-between flex-grow w-full max-w-3xl mx-auto py-8">
+        <div className="w-full">
+          <h1 className="text-2xl font-bold mb-10 text-center">
+            What type of home loan are you looking for?
+          </h1>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mb-10">
+            <SelectionCard 
+              title="Purchase" 
+              icon={<PurchaseIcon selected={selectedLoanType === 'purchase'} />}
+              selected={selectedLoanType === 'purchase'}
+              onClick={() => handleSelect('purchase')}
+            />
 
-          <SelectionCard 
-            title="Refinance" 
-            icon={<RefinanceIcon selected={selectedLoanType === 'refinance'} />}
-            selected={selectedLoanType === 'refinance'}
-            onClick={() => handleSelect('refinance')}
-          />
+            <SelectionCard 
+              title="Refinance" 
+              icon={<RefinanceIcon selected={selectedLoanType === 'refinance'} />}
+              selected={selectedLoanType === 'refinance'}
+              onClick={() => handleSelect('refinance')}
+            />
+          </div>
         </div>
 
-        <div className="mt-auto">
+        <div className="flex justify-center mt-6 mb-4 w-full">
           <Button 
             variant="outline" 
             className="bg-gray-200 hover:bg-gray-300 border-none rounded-full px-10 py-2"

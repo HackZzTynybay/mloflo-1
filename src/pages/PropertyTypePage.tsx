@@ -30,50 +30,52 @@ const PropertyTypePage = () => {
       totalSteps={10} 
       title="Loan & Property"
     >
-      <div className="flex flex-col items-center justify-center flex-grow w-full max-w-4xl mx-auto py-8">
-        <h1 className="text-2xl font-bold mb-10 text-center">
-          What type of property are you looking for?
-        </h1>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full mb-10">
-          <SelectionCard 
-            title="Single Family" 
-            icon={<SingleFamilyIcon selected={selectedPropertyType === 'single-family'} />}
-            selected={selectedPropertyType === 'single-family'}
-            onClick={() => handleSelect('single-family')}
-          />
+      <div className="flex flex-col items-center justify-between flex-grow w-full max-w-4xl mx-auto py-8">
+        <div className="w-full">
+          <h1 className="text-2xl font-bold mb-10 text-center">
+            What type of property are you looking for?
+          </h1>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full mb-10">
+            <SelectionCard 
+              title="Single Family" 
+              icon={<SingleFamilyIcon selected={selectedPropertyType === 'single-family'} />}
+              selected={selectedPropertyType === 'single-family'}
+              onClick={() => handleSelect('single-family')}
+            />
 
-          <SelectionCard 
-            title="Condominium" 
-            icon={<CondoIcon selected={selectedPropertyType === 'condo'} />}
-            selected={selectedPropertyType === 'condo'}
-            onClick={() => handleSelect('condo')}
-          />
+            <SelectionCard 
+              title="Condominium" 
+              icon={<CondoIcon selected={selectedPropertyType === 'condo'} />}
+              selected={selectedPropertyType === 'condo'}
+              onClick={() => handleSelect('condo')}
+            />
 
-          <SelectionCard 
-            title="Townhouse" 
-            icon={<TownhouseIcon selected={selectedPropertyType === 'townhouse'} />}
-            selected={selectedPropertyType === 'townhouse'}
-            onClick={() => handleSelect('townhouse')}
-          />
+            <SelectionCard 
+              title="Townhouse" 
+              icon={<TownhouseIcon selected={selectedPropertyType === 'townhouse'} />}
+              selected={selectedPropertyType === 'townhouse'}
+              onClick={() => handleSelect('townhouse')}
+            />
 
-          <SelectionCard 
-            title="Multifamily" 
-            icon={<MultifamilyIcon selected={selectedPropertyType === 'multifamily'} />}
-            selected={selectedPropertyType === 'multifamily'}
-            onClick={() => handleSelect('multifamily')}
-          />
+            <SelectionCard 
+              title="Multifamily" 
+              icon={<MultifamilyIcon selected={selectedPropertyType === 'multifamily'} />}
+              selected={selectedPropertyType === 'multifamily'}
+              onClick={() => handleSelect('multifamily')}
+            />
 
-          <SelectionCard 
-            title="Manufactured/
+            <SelectionCard 
+              title="Manufactured/
 Mobile Home" 
-            icon={<MobileHomeIcon selected={selectedPropertyType === 'mobile-home'} />}
-            selected={selectedPropertyType === 'mobile-home'}
-            onClick={() => handleSelect('mobile-home')}
-          />
+              icon={<MobileHomeIcon selected={selectedPropertyType === 'mobile-home'} />}
+              selected={selectedPropertyType === 'mobile-home'}
+              onClick={() => handleSelect('mobile-home')}
+            />
+          </div>
         </div>
 
-        <div className="mt-auto">
+        <div className="flex justify-center mt-6 mb-4 w-full">
           <Button 
             variant="outline" 
             className="bg-gray-200 hover:bg-gray-300 border-none rounded-full px-10 py-2"

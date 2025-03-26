@@ -22,7 +22,7 @@ const SelectionCard: React.FC<SelectionCardProps> = ({
       <div className={`flex items-center justify-center h-40 w-full ${selected ? 'text-mloflo-blue' : 'text-mloflo-blue'}`}>
         {icon}
       </div>
-      <h3 className="text-lg font-medium text-center text-gray-800 mt-4">
+      <h3 className="text-lg font-medium text-center text-gray-800 mt-4 w-full px-2 break-words line-clamp-2 overflow-hidden">
         {title}
       </h3>
     </div>

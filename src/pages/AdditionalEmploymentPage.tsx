@@ -29,12 +29,12 @@ const AdditionalEmploymentPage = () => {
       totalSteps={10} 
       title="Employment"
     >
-      <div className="flex flex-col items-center justify-center flex-grow w-full max-w-3xl mx-auto py-8">
-        <h1 className="text-2xl font-bold mb-10 text-center">
+      <div className="flex flex-col items-center justify-center flex-grow w-full max-w-3xl mx-auto py-10">
+        <h1 className="text-2xl font-bold mb-12 text-center">
           Would you like to add any additional employment?
         </h1>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-xl mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-2xl mb-12">
           <SelectionCard
             title="Yes"
             icon={<YesIcon selected={selectedOption === 'yes'} />}
@@ -49,7 +49,7 @@ const AdditionalEmploymentPage = () => {
           />
         </div>
 
-        <div className="flex justify-center mt-10">
+        <div className="flex justify-center mt-14">
           <Button 
             type="button"
             variant="outline" 

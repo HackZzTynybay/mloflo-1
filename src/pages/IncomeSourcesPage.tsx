@@ -1,78 +1,38 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout';
 import { Button } from '@/components/ui/button';
 import SelectionCard from '@/components/SelectionCard';
-import AlimonyIcon from '@/components/icons/AlimonyIcon';
-import BoarderIncomeIcon from '@/components/icons/BoarderIncomeIcon';
-import CapitalGainsIcon from '@/components/icons/CapitalGainsIcon';
-import ChildSupportIcon from '@/components/icons/ChildSupportIcon';
-import DisabilityIcon from '@/components/icons/DisabilityIcon';
-import FosterCareIcon from '@/components/icons/FosterCareIcon';
-import MortgageCreditIcon from '@/components/icons/MortgageCreditIcon';
-import DifferentialPaymentsIcon from '@/components/icons/DifferentialPaymentsIcon';
-import ReceivableIcon from '@/components/icons/ReceivableIcon';
-import PublicAssistanceIcon from '@/components/icons/PublicAssistanceIcon';
-import RetirementIcon from '@/components/icons/RetirementIcon';
-import RoyaltyPaymentIcon from '@/components/icons/RoyaltyPaymentIcon';
-import MaintenanceIcon from '@/components/icons/MaintenanceIcon';
-import SocialSecurityIcon from '@/components/icons/SocialSecurityIcon';
-import TrustIcon from '@/components/icons/TrustIcon';
-import UnemploymentBenefitsIcon from '@/components/icons/UnemploymentBenefitsIcon';
-import VACompensationIcon from '@/components/icons/VACompensationIcon';
-import OthersIcon from '@/components/icons/OthersIcon';
-import HousingParsonageIcon from '@/components/icons/HousingParsonageIcon';
-import InterestDividendsIcon from '@/components/icons/InterestDividendsIcon';
-import AutomobileAllowanceIcon from '@/components/icons/AutomobileAllowanceIcon';
+import { CreditCard, Home, PiggyBank } from 'lucide-react';
+
+interface IncomeSource {
+  id: string;
+  name: string;
+  icon: React.ReactNode;
+}
+
+const incomeSources: IncomeSource[] = [
+  { id: 'salary', name: 'Salary', icon: <CreditCard size={48} /> },
+  { id: 'rental', name: 'Rental Income', icon: <Home size={48} /> },
+  { id: 'investment', name: 'Investment Income', icon: <PiggyBank size={48} /> },
+  { id: 'other', name: 'Other', icon: <CreditCard size={48} /> },
+];
 
 const IncomeSourcesPage = () => {
   const navigate = useNavigate();
   const [selectedSources, setSelectedSources] = useState<string[]>([]);
 
-  const toggleSource = (source: string) => {
-    if (selectedSources.includes(source)) {
-      setSelectedSources(selectedSources.filter(item => item !== source));
-    } else {
-      setSelectedSources([...selectedSources, source]);
-    }
-  };
-
-  const handleBack = () => {
-    navigate('/additional-income-sources');
+  const handleSelect = (sourceId: string) => {
+    setSelectedSources((prev) =>
+      prev.includes(sourceId)
+        ? prev.filter((id) => id !== sourceId)
+        : [...prev, sourceId]
+    );
   };
 
   const handleNext = () => {
-    if (selectedSources.includes('child-support')) {
-      navigate('/child-support-details');
-    } else {
-      navigate('/add-more-income-sources');
-    }
+    navigate('/declarations-page');
   };
-
-  const incomeSources = [
-    { id: 'alimony', title: 'Alimony', icon: AlimonyIcon },
-    { id: 'auto-allowance', title: 'Automobile Allowance', icon: AutomobileAllowanceIcon },
-    { id: 'boarder-income', title: 'Boarder Income', icon: BoarderIncomeIcon },
-    { id: 'capital-gains', title: 'Capital Gains', icon: CapitalGainsIcon },
-    { id: 'child-support', title: 'Child Support', icon: ChildSupportIcon },
-    { id: 'disability', title: 'Disability', icon: DisabilityIcon },
-    { id: 'foster-care', title: 'Foster Care', icon: FosterCareIcon },
-    { id: 'housing-parsonage', title: 'Housing or Parsonage', icon: HousingParsonageIcon },
-    { id: 'interest-dividends', title: 'Interest and Dividends', icon: InterestDividendsIcon },
-    { id: 'mortgage-credit', title: 'Mortgage Credit Certificate', icon: MortgageCreditIcon },
-    { id: 'differential-payments', title: 'Mortgage Differential Payment', icon: DifferentialPaymentsIcon },
-    { id: 'notes-receivable', title: 'Notes Receivable', icon: ReceivableIcon },
-    { id: 'public-assistance', title: 'Public Assistance', icon: PublicAssistanceIcon },
-    { id: 'retirement', title: 'Retirement', icon: RetirementIcon },
-    { id: 'royalty-payments', title: 'Royalty Payments', icon: RoyaltyPaymentIcon },
-    { id: 'maintenance', title: 'Separate Maintenance', icon: MaintenanceIcon },
-    { id: 'social-security', title: 'Social Security', icon: SocialSecurityIcon },
-    { id: 'trust', title: 'Trust', icon: TrustIcon },
-    { id: 'unemployment-benefits', title: 'Unemployment Benefits', icon: UnemploymentBenefitsIcon },
-    { id: 'va-compensation', title: 'VA Compensation', icon: VACompensationIcon },
-    { id: 'other', title: 'Other', icon: OthersIcon },
-  ];
 
   return (
     <Layout 
@@ -80,41 +40,41 @@ const IncomeSourcesPage = () => {
       totalSteps={10} 
       title="Employment"
     >
-      <div className="flex flex-col items-center justify-center flex-grow w-full max-w-7xl mx-auto py-8 px-6">
-        <h1 className="text-2xl font-bold mb-10 text-center">
+      <div className="flex flex-col items-center justify-center flex-grow w-full max-w-7xl mx-auto py-10 px-8">
+        <h1 className="text-2xl font-bold mb-12 text-center">
           Choose your additional sources of income.
         </h1>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 w-full mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 w-full mb-12">
           {incomeSources.map((source) => (
             <SelectionCard
               key={source.id}
-              title={source.title}
-              icon={<source.icon selected={selectedSources.includes(source.id)} />}
+              title={source.name}
+              icon={source.icon}
               selected={selectedSources.includes(source.id)}
-              onClick={() => toggleSource(source.id)}
+              onClick={() => handleSelect(source.id)}
             />
           ))}
         </div>
 
-        <div className="flex justify-center mt-12">
+        <div className="flex justify-center mt-14">
           <Button 
             type="button"
             variant="outline" 
             className="bg-gray-200 hover:bg-gray-300 border-none rounded-full px-10 py-2"
-            onClick={handleBack}
+            onClick={() => navigate('/additional-income-sources')}
           >
             Back
           </Button>
-          {selectedSources.length > 0 && (
-            <Button 
-              type="button"
-              className="bg-mloflo-blue hover:bg-blue-700 ml-4 rounded-full px-10 py-2"
-              onClick={handleNext}
-            >
-              Next
-            </Button>
-          )}
+          
+          <Button 
+            type="button"
+            className="bg-mloflo-blue hover:bg-blue-700 ml-4 rounded-full px-10 py-2"
+            onClick={handleNext}
+            disabled={selectedSources.length === 0}
+          >
+            Next
+          </Button>
         </div>
       </div>
     </Layout>

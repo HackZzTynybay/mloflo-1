@@ -29,12 +29,12 @@ const AdditionalIncomeSourcesPage = () => {
       totalSteps={10} 
       title="Employment"
     >
-      <div className="flex flex-col items-center justify-center flex-grow w-full max-w-3xl mx-auto py-8">
-        <h1 className="text-2xl font-bold mb-10 text-center">
+      <div className="flex flex-col items-center justify-center flex-grow w-full max-w-3xl mx-auto py-10">
+        <h1 className="text-2xl font-bold mb-12 text-center">
           Do you receive income from any additional sources?
         </h1>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-xl mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-2xl mb-12">
           <SelectionCard
             title="Yes"
             icon={<YesIcon selected={selectedOption === 'yes'} />}
@@ -49,7 +49,7 @@ const AdditionalIncomeSourcesPage = () => {
           />
         </div>
 
-        <div className="flex justify-center mt-10">
+        <div className="flex justify-center mt-14">
           <Button 
             type="button"
             variant="outline" 
@@ -59,15 +59,14 @@ const AdditionalIncomeSourcesPage = () => {
             Back
           </Button>
           
-          {selectedOption && (
-            <Button 
-              type="button"
-              className="bg-mloflo-blue hover:bg-blue-700 ml-4 rounded-full px-10 py-2"
-              onClick={handleNext}
-            >
-              Next
-            </Button>
-          )}
+          <Button 
+            type="button"
+            className="bg-mloflo-blue hover:bg-blue-700 ml-4 rounded-full px-10 py-2"
+            onClick={handleNext}
+            disabled={!selectedOption}
+          >
+            Next
+          </Button>
         </div>
       </div>
     </Layout>

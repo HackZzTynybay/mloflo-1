@@ -32,13 +32,13 @@ const PropertyFoundPage = () => {
       totalSteps={15} 
       title="Loan & Property"
     >
-      <div className="flex flex-col items-center justify-between flex-grow w-full max-w-3xl mx-auto py-8">
+      <div className="flex flex-col items-center justify-between flex-grow w-full max-w-3xl mx-auto py-10">
         <div className="w-full">
-          <h1 className="text-2xl font-bold mb-10 text-center">
+          <h1 className="text-2xl font-bold mb-12 text-center">
             Have you found the property?
           </h1>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mb-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-2xl mx-auto mb-12">
             <SelectionCard 
               title="Yes" 
               icon={<YesIcon />}
@@ -55,7 +55,7 @@ const PropertyFoundPage = () => {
           </div>
         </div>
 
-        <div className="flex justify-center mt-auto mb-4 w-full">
+        <div className="flex justify-center mt-14 mb-4 w-full">
           <Button 
             variant="outline" 
             className="bg-gray-200 hover:bg-gray-300 border-none rounded-full px-10 py-2"

@@ -3,8 +3,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout';
 import { Button } from '@/components/ui/button';
-import YesIcon from '../components/icons/YesIcon';
-import NoIcon from '../components/icons/NoIcon';
+import YesIcon from '@/components/icons/YesIcon';
+import NoIcon from '@/components/icons/NoIcon';
+import SelectionCard from '@/components/SelectionCard';
 
 const MailingAddressQuestionPage = () => {
   const navigate = useNavigate();
@@ -26,30 +27,27 @@ const MailingAddressQuestionPage = () => {
       totalSteps={10} 
       title="Personal Information"
     >
-      <div className="flex flex-col items-center justify-center flex-grow w-full max-w-3xl mx-auto py-8">
-        <h1 className="text-2xl font-bold mb-10 text-center">
+      <div className="flex flex-col items-center justify-center flex-grow w-full max-w-3xl mx-auto py-10">
+        <h1 className="text-2xl font-bold mb-12 text-center">
           Is your mailing address same as current?
         </h1>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-xl mx-auto mb-10">
-          <div 
-            className={`border rounded-lg p-6 flex flex-col items-center justify-center hover:shadow-md transition-all cursor-pointer ${selectedOption === 'yes' ? 'border-mloflo-blue bg-blue-50' : 'border-gray-200'}`}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-2xl mb-12">
+          <SelectionCard
+            title="Yes"
+            icon={<YesIcon selected={selectedOption === 'yes'} />}
+            selected={selectedOption === 'yes'}
             onClick={() => handleOptionClick('yes')}
-          >
-            <YesIcon />
-            <h3 className="text-lg font-medium mt-4">Yes</h3>
-          </div>
-
-          <div 
-            className={`border rounded-lg p-6 flex flex-col items-center justify-center hover:shadow-md transition-all cursor-pointer ${selectedOption === 'no' ? 'border-mloflo-blue bg-blue-50' : 'border-gray-200'}`}
+          />
+          <SelectionCard
+            title="No"
+            icon={<NoIcon selected={selectedOption === 'no'} />}
+            selected={selectedOption === 'no'}
             onClick={() => handleOptionClick('no')}
-          >
-            <NoIcon />
-            <h3 className="text-lg font-medium mt-4">No</h3>
-          </div>
+          />
         </div>
 
-        <div className="flex justify-center mt-auto">
+        <div className="flex justify-center mt-14">
           <Button 
             type="button"
             variant="outline" 

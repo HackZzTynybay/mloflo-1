@@ -13,7 +13,8 @@ const ServiceExpirationPage = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate('/income-information');
+    // Temporarily navigate back home since we removed the next pages
+    navigate('/');
   };
 
   return (

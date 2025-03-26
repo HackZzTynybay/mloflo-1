@@ -48,18 +48,6 @@ import MilitaryServicePage from "./pages/MilitaryServicePage";
 import MilitaryServiceDetailsPage from "./pages/MilitaryServiceDetailsPage";
 import ServiceExpirationPage from "./pages/ServiceExpirationPage";
 
-// Extended Pages from Service Expiration
-import IncomeInformationPage from "./pages/IncomeInformationPage";
-import EmploymentDetailsPage from "./pages/EmploymentDetailsPage";
-import EmploymentAddressPage from "./pages/EmploymentAddressPage";
-import EmploymentPhonePage from "./pages/EmploymentPhonePage";
-import AdditionalIncomePage from "./pages/AdditionalIncomePage";
-import AdditionalIncomeDetailsPage from "./pages/AdditionalIncomeDetailsPage";
-import AssetsInformationPage from "./pages/AssetsInformationPage";
-import DeclarationsPage from "./pages/DeclarationsPage";
-import ReviewSubmitPage from "./pages/ReviewSubmitPage";
-import ApplicationSubmittedPage from "./pages/ApplicationSubmittedPage";
-
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -111,18 +99,6 @@ const App = () => (
           <Route path="/military-service" element={<MilitaryServicePage />} />
           <Route path="/military-service-details" element={<MilitaryServiceDetailsPage />} />
           <Route path="/service-expiration" element={<ServiceExpirationPage />} />
-          
-          {/* Extended Pages from Service Expiration */}
-          <Route path="/income-information" element={<IncomeInformationPage />} />
-          <Route path="/employment-details" element={<EmploymentDetailsPage />} />
-          <Route path="/employment-address" element={<EmploymentAddressPage />} />
-          <Route path="/employment-phone" element={<EmploymentPhonePage />} />
-          <Route path="/additional-income" element={<AdditionalIncomePage />} />
-          <Route path="/additional-income-details" element={<AdditionalIncomeDetailsPage />} />
-          <Route path="/assets-information" element={<AssetsInformationPage />} />
-          <Route path="/declarations-page" element={<DeclarationsPage />} />
-          <Route path="/review-submit" element={<ReviewSubmitPage />} />
-          <Route path="/application-submitted" element={<ApplicationSubmittedPage />} />
           
           {/* Catch-all route */}
           <Route path="*" element={<NotFound />} />

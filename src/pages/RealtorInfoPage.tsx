@@ -22,7 +22,7 @@ const RealtorInfoPage = () => {
 
   return (
     <Layout 
-      currentStep={2} 
+      currentStep={5} 
       totalSteps={10} 
       title="Loan & Property"
     >

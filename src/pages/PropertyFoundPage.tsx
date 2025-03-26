@@ -28,7 +28,7 @@ const PropertyFoundPage = () => {
 
   return (
     <Layout 
-      currentStep={2} 
+      currentStep={8} 
       totalSteps={10} 
       title="Loan & Property"
     >

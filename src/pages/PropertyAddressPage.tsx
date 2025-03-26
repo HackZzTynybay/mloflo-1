@@ -25,7 +25,7 @@ const PropertyAddressPage = () => {
 
   return (
     <Layout 
-      currentStep={5} 
+      currentStep={9} 
       totalSteps={10} 
       title="Loan & Property"
     >
@@ -95,7 +95,7 @@ const PropertyAddressPage = () => {
             />
           </div>
 
-          <div className="mb-6 mt-6">
+          <div className="mb-6 mt-8">
             <Label className="block mb-4 text-gray-700">
               If you occupy the property, will you set aside space within the property to operate your business? (e.g., daycare facility, medical office, beauty/barber shop)?
             </Label>
@@ -111,7 +111,7 @@ const PropertyAddressPage = () => {
             </RadioGroup>
           </div>
 
-          <div className="mb-6">
+          <div className="mb-6 mt-8">
             <Label className="block mb-4 text-gray-700">
               Do you want to add gift or grants you have been given or will receive for this loan?
             </Label>
@@ -127,7 +127,7 @@ const PropertyAddressPage = () => {
             </RadioGroup>
           </div>
 
-          <div className="flex justify-center mt-10 mb-4">
+          <div className="flex justify-center mt-12 mb-4">
             <Button 
               type="button"
               variant="outline" 

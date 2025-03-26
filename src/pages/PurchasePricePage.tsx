@@ -24,7 +24,7 @@ const PurchasePricePage = () => {
 
   return (
     <Layout 
-      currentStep={2} 
+      currentStep={10} 
       totalSteps={10} 
       title="Loan & Property"
     >

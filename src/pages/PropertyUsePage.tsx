@@ -24,7 +24,7 @@ const PropertyUsePage = () => {
 
   return (
     <Layout 
-      currentStep={2} 
+      currentStep={7} 
       totalSteps={10} 
       title="Loan & Property"
     >

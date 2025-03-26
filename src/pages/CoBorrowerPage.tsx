@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Layout from '../components/Layout';
 import { Plus } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 interface CoBorrower {
   relationship: string;
@@ -59,8 +60,8 @@ const CoBorrowerPage = () => {
   const handleNext = () => {
     // In a real app, we would save the form data here
     console.log('Co-borrower data:', coBorrowers);
-    // Navigate to the next page in the flow
-    navigate('/');
+    // Navigate to the loan type page in the flow
+    navigate('/loan-type');
   };
   
   const handleBack = () => {
@@ -68,7 +69,7 @@ const CoBorrowerPage = () => {
   };
   
   return (
-    <Layout currentStep={3} title="Welcome">
+    <Layout currentStep={2} totalSteps={10} title="Welcome">
       <div className="flex flex-col items-center justify-center py-8 w-full max-w-3xl mx-auto">
         <h1 className="text-3xl font-bold mb-12 text-center">
           Now let's learn a little about your co-borrower.
@@ -192,12 +193,20 @@ const CoBorrowerPage = () => {
         </div>
         
         <div className="flex justify-between w-full mt-12">
-          <button onClick={handleBack} className="btn-secondary">
+          <Button 
+            variant="outline" 
+            className="bg-gray-200 hover:bg-gray-300 border-none rounded-full px-10 py-2"
+            onClick={handleBack}
+          >
             Back
-          </button>
-          <button onClick={handleNext} className="btn-primary">
+          </Button>
+          
+          <Button 
+            className="bg-mloflo-blue hover:bg-blue-700 ml-4 rounded-full px-10 py-2"
+            onClick={handleNext}
+          >
             Next
-          </button>
+          </Button>
         </div>
       </div>
     </Layout>

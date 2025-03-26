@@ -13,7 +13,7 @@ const DownPaymentPage = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate('/purchase-price'); // Navigate to the next page in your flow
+    navigate('/'); // Navigate back to home after the flow is complete
   };
 
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,7 +34,7 @@ const DownPaymentPage = () => {
 
   return (
     <Layout 
-      currentStep={2} 
+      currentStep={10} 
       totalSteps={10} 
       title="Loan & Property"
     >

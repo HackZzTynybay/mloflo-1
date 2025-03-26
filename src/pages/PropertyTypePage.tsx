@@ -26,7 +26,7 @@ const PropertyTypePage = () => {
 
   return (
     <Layout 
-      currentStep={2} 
+      currentStep={6} 
       totalSteps={10} 
       title="Loan & Property"
     >
@@ -39,28 +39,28 @@ const PropertyTypePage = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full mb-10">
             <SelectionCard 
               title="Single Family" 
-              icon={<SingleFamilyIcon selected={false} />}
+              icon={<SingleFamilyIcon selected={selectedPropertyType === 'single-family'} />}
               selected={selectedPropertyType === 'single-family'}
               onClick={() => handleSelect('single-family')}
             />
 
             <SelectionCard 
               title="Condominium" 
-              icon={<CondoIcon selected={false} />}
+              icon={<CondoIcon selected={selectedPropertyType === 'condo'} />}
               selected={selectedPropertyType === 'condo'}
               onClick={() => handleSelect('condo')}
             />
 
             <SelectionCard 
               title="Townhouse" 
-              icon={<TownhouseIcon selected={false} />}
+              icon={<TownhouseIcon selected={selectedPropertyType === 'townhouse'} />}
               selected={selectedPropertyType === 'townhouse'}
               onClick={() => handleSelect('townhouse')}
             />
 
             <SelectionCard 
               title="Multifamily" 
-              icon={<MultifamilyIcon selected={false} />}
+              icon={<MultifamilyIcon selected={selectedPropertyType === 'multifamily'} />}
               selected={selectedPropertyType === 'multifamily'}
               onClick={() => handleSelect('multifamily')}
             />
@@ -68,14 +68,14 @@ const PropertyTypePage = () => {
             <SelectionCard 
               title="Manufactured/
 Mobile Home" 
-              icon={<MobileHomeIcon selected={false} />}
+              icon={<MobileHomeIcon selected={selectedPropertyType === 'mobile-home'} />}
               selected={selectedPropertyType === 'mobile-home'}
               onClick={() => handleSelect('mobile-home')}
             />
           </div>
         </div>
 
-        <div className="flex justify-center mt-6 mb-4 w-full">
+        <div className="flex justify-center mt-auto mb-4 w-full">
           <Button 
             variant="outline" 
             className="bg-gray-200 hover:bg-gray-300 border-none rounded-full px-10 py-2"

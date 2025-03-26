@@ -19,6 +19,7 @@ import DeclarationsPage from './pages/DeclarationsPage';
 import IncomePage from './pages/IncomePage';
 import AddMoreIncomeSourcesPage from './pages/AddMoreIncomeSourcesPage';
 import NotFound from './pages/NotFound';
+import CashOutPage from './pages/CashOutPage';
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
             <Route path="/declarations-page" element={<DeclarationsPage />} />
             <Route path="/income" element={<IncomePage />} />
             <Route path="/add-more-income-sources" element={<AddMoreIncomeSourcesPage />} />
+            <Route path="/cash-out" element={<CashOutPage />} />
             
             <Route path="*" element={<NotFound />} />
           </Routes>

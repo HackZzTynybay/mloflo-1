@@ -22,31 +22,9 @@ import TrustIcon from '@/components/icons/TrustIcon';
 import UnemploymentBenefitsIcon from '@/components/icons/UnemploymentBenefitsIcon';
 import VACompensationIcon from '@/components/icons/VACompensationIcon';
 import OthersIcon from '@/components/icons/OthersIcon';
-
-// Add HousingParsonage component
-const HousingParsonageIcon = () => (
-  <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M60 20L20 50V100H45V70H75V100H100V50L60 20Z" stroke="#344AD5" strokeWidth="2"/>
-    <path d="M60 40L40 55V85H50V65H70V85H80V55L60 40Z" stroke="#344AD5" strokeWidth="2"/>
-  </svg>
-);
-
-// Add Interest and Dividends component
-const InterestDividendsIcon = () => (
-  <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M30 40H90V90H30V40Z" stroke="#344AD5" strokeWidth="2"/>
-    <path d="M40 60H80M40 70H80M40 80H60" stroke="#344AD5" strokeWidth="2"/>
-    <path d="M40 50L55 30H65L80 50" stroke="#344AD5" strokeWidth="2"/>
-  </svg>
-);
-
-// Add Automobile Allowance icon component
-const AutomobileAllowanceIcon = () => (
-  <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M30 60H90M30 60C27.2386 60 25 62.2386 25 65V75M30 60L40 40H80L90 60M90 60C92.7614 60 95 62.2386 95 65V75M35 75C35 77.7614 32.7614 80 30 80C27.2386 80 25 77.7614 25 75M35 75C35 72.2386 32.7614 70 30 70C27.2386 70 25 72.2386 25 75M85 75C85 77.7614 87.2386 80 90 80C92.7614 80 95 77.7614 95 75M85 75C85 72.2386 87.2386 70 90 70C92.7614 70 95 72.2386 95 75" stroke="#344AD5" strokeWidth="2"/>
-    <path d="M60 60V80M40 60V80M80 60V80" stroke="#344AD5" strokeWidth="2"/>
-  </svg>
-);
+import HousingParsonageIcon from '@/components/icons/HousingParsonageIcon';
+import InterestDividendsIcon from '@/components/icons/InterestDividendsIcon';
+import AutomobileAllowanceIcon from '@/components/icons/AutomobileAllowanceIcon';
 
 const IncomeSourcesPage = () => {
   const navigate = useNavigate();
@@ -78,12 +56,12 @@ const IncomeSourcesPage = () => {
       totalSteps={10} 
       title="Employment"
     >
-      <div className="flex flex-col items-center justify-center flex-grow w-full max-w-5xl mx-auto py-6">
+      <div className="flex flex-col items-center justify-center flex-grow w-full max-w-5xl mx-auto py-6 px-4">
         <h1 className="text-2xl font-bold mb-8 text-center">
           Choose your additional sources of income.
         </h1>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full mb-8">
           <SelectionCard
             title="Alimony"
             icon={<AlimonyIcon selected={selectedSources.includes('alimony')} />}
@@ -92,7 +70,7 @@ const IncomeSourcesPage = () => {
           />
           <SelectionCard
             title="Automobile Allowance"
-            icon={<AutomobileAllowanceIcon />}
+            icon={<AutomobileAllowanceIcon selected={selectedSources.includes('auto-allowance')} />}
             selected={selectedSources.includes('auto-allowance')}
             onClick={() => toggleSource('auto-allowance')}
           />
@@ -128,13 +106,13 @@ const IncomeSourcesPage = () => {
           />
           <SelectionCard
             title="Housing or Parsonage"
-            icon={<HousingParsonageIcon />}
+            icon={<HousingParsonageIcon selected={selectedSources.includes('housing-parsonage')} />}
             selected={selectedSources.includes('housing-parsonage')}
             onClick={() => toggleSource('housing-parsonage')}
           />
           <SelectionCard
             title="Interest and Dividends"
-            icon={<InterestDividendsIcon />}
+            icon={<InterestDividendsIcon selected={selectedSources.includes('interest-dividends')} />}
             selected={selectedSources.includes('interest-dividends')}
             onClick={() => toggleSource('interest-dividends')}
           />

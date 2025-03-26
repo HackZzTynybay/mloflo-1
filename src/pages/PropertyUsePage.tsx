@@ -37,28 +37,28 @@ const PropertyUsePage = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full mb-10">
             <SelectionCard 
               title="Primary Residence" 
-              icon={<PrimaryResidenceIcon selected={selectedUse === 'primary'} />}
+              icon={<PrimaryResidenceIcon />}
               selected={selectedUse === 'primary'}
               onClick={() => handleSelect('primary')}
             />
 
             <SelectionCard 
               title="Secondary Residence" 
-              icon={<SecondaryResidenceIcon selected={selectedUse === 'secondary'} />}
+              icon={<SecondaryResidenceIcon />}
               selected={selectedUse === 'secondary'}
               onClick={() => handleSelect('secondary')}
             />
 
             <SelectionCard 
               title="Investment Property" 
-              icon={<InvestmentPropertyIcon selected={selectedUse === 'investment'} />}
+              icon={<InvestmentPropertyIcon />}
               selected={selectedUse === 'investment'}
               onClick={() => handleSelect('investment')}
             />
           </div>
         </div>
 
-        <div className="flex justify-center mt-6 mb-4 w-full">
+        <div className="flex justify-center mt-auto mb-4 w-full">
           <Button 
             variant="outline" 
             className="bg-gray-200 hover:bg-gray-300 border-none rounded-full px-10 py-2"

@@ -6,21 +6,149 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { MapPin } from 'lucide-react';
+import { MapPin, AlertCircle } from 'lucide-react';
+import { toast } from "@/components/ui/use-toast";
 
 const PropertyAddressPage = () => {
   const navigate = useNavigate();
-  const [address, setAddress] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const [aptUnit, setAptUnit] = useState('');
-  const [zipCode, setZipCode] = useState('');
-  const [businessSpace, setBusinessSpace] = useState('no');
-  const [addGift, setAddGift] = useState('no');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    address: '',
+    city: '',
+    state: '',
+    aptUnit: '',
+    zipCode: '',
+    businessSpace: 'no',
+    addGift: 'no'
+  });
+
+  const [errors, setErrors] = useState({
+    address: '',
+    city: '',
+    state: '',
+    zipCode: ''
+  });
+
+  const [touched, setTouched] = useState({
+    address: false,
+    city: false,
+    state: false,
+    aptUnit: false,
+    zipCode: false
+  });
+
+  const validateRequired = (value: string, fieldName: string): string => {
+    if (!value.trim()) return `${fieldName} is required`;
+    return "";
+  };
+
+  const validateState = (value: string): string => {
+    if (!value.trim()) return "State is required";
+    if (value.length > 2) return "Please use state abbreviation (e.g., CA)";
+    if (!/^[A-Za-z]+$/.test(value)) return "State cannot contain numbers or special characters";
+    return "";
+  };
+
+  const validateZipCode = (value: string): string => {
+    if (!value.trim()) return "Zip Code is required";
+    if (!/^\d{5}(-\d{4})?$/.test(value)) return "Please enter a valid 5-digit zip code";
+    return "";
+  };
+
+  const handleChange = (field: keyof typeof formData, value: string) => {
+    // For text fields, validate input type
+    if (field === 'city' || field === 'state') {
+      // Only allow letters, spaces, hyphens for city/state
+      if (value === '' || /^[A-Za-z\s\-]*$/.test(value)) {
+        setFormData(prev => ({ ...prev, [field]: value }));
+      }
+      return;
+    }
+    
+    // For zip code, only allow numbers and dash
+    if (field === 'zipCode') {
+      if (value === '' || /^[\d-]*$/.test(value)) {
+        setFormData(prev => ({ ...prev, [field]: value }));
+      }
+      return;
+    }
+    
+    // For other fields
+    setFormData(prev => ({ ...prev, [field]: value }));
+    
+    if (touched[field] && field in errors) {
+      validateField(field as keyof typeof errors, value);
+    }
+  };
+
+  const validateField = (field: keyof typeof errors, value: string) => {
+    let error = '';
+    
+    switch (field) {
+      case 'address':
+        error = validateRequired(value, 'Address');
+        break;
+      case 'city':
+        error = validateRequired(value, 'City');
+        break;
+      case 'state':
+        error = validateState(value);
+        break;
+      case 'zipCode':
+        error = validateZipCode(value);
+        break;
+      default:
+        break;
+    }
+    
+    setErrors(prev => ({ ...prev, [field]: error }));
+    return error;
+  };
+
+  const handleBlur = (field: keyof typeof formData) => {
+    setTouched(prev => ({ ...prev, [field]: true }));
+    
+    if (field in errors) {
+      validateField(field as keyof typeof errors, formData[field]);
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors = {
+      address: validateRequired(formData.address, 'Address'),
+      city: validateRequired(formData.city, 'City'),
+      state: validateState(formData.state),
+      zipCode: validateZipCode(formData.zipCode)
+    };
+    
+    setErrors(newErrors);
+    setTouched({
+      address: true,
+      city: true,
+      state: true,
+      aptUnit: true,
+      zipCode: true
+    });
+    
+    return !Object.values(newErrors).some(error => error);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate('/purchase-price');
+    
+    if (validateForm()) {
+      setIsSubmitting(true);
+      setTimeout(() => {
+        navigate('/purchase-price');
+        setIsSubmitting(false);
+      }, 500);
+    } else {
+      toast({
+        title: "Please fix the errors",
+        description: "Please correct the highlighted fields before continuing.",
+        variant: "destructive"
+      });
+    }
   };
 
   return (
@@ -36,41 +164,69 @@ const PropertyAddressPage = () => {
         
         <form onSubmit={handleSubmit} className="w-full space-y-6">
           <div className="mb-4">
-            <Label htmlFor="address" className="block mb-2 text-gray-700">Property Address</Label>
+            <Label htmlFor="address" className="block mb-2 text-gray-700 flex items-center">
+              Property Address <span className="text-red-500 ml-1">*</span>
+            </Label>
             <div className="relative">
               <Input
                 id="address"
                 placeholder="Property Address"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-                className="pr-10 py-6"
+                value={formData.address}
+                onChange={(e) => handleChange('address', e.target.value)}
+                onBlur={() => handleBlur('address')}
+                className={`pr-10 py-6 ${errors.address ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
               />
               <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
                 <MapPin size={16} />
               </div>
             </div>
+            {errors.address && (
+              <div className="flex items-center mt-1 text-red-500 text-sm">
+                <AlertCircle className="h-4 w-4 mr-1" />
+                <span>{errors.address}</span>
+              </div>
+            )}
           </div>
 
           <div className="mb-4">
-            <Label htmlFor="city" className="block mb-2 text-gray-700">City</Label>
+            <Label htmlFor="city" className="block mb-2 text-gray-700 flex items-center">
+              City <span className="text-red-500 ml-1">*</span>
+            </Label>
             <Input
               id="city"
               placeholder="City"
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              className="py-6"
+              value={formData.city}
+              onChange={(e) => handleChange('city', e.target.value)}
+              onBlur={() => handleBlur('city')}
+              className={`py-6 ${errors.city ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
             />
+            {errors.city && (
+              <div className="flex items-center mt-1 text-red-500 text-sm">
+                <AlertCircle className="h-4 w-4 mr-1" />
+                <span>{errors.city}</span>
+              </div>
+            )}
           </div>
 
           <div className="mb-4">
-            <Label htmlFor="state" className="block mb-2 text-gray-700">State</Label>
+            <Label htmlFor="state" className="block mb-2 text-gray-700 flex items-center">
+              State <span className="text-red-500 ml-1">*</span>
+            </Label>
             <Input
               id="state"
               placeholder="State"
-              value={state}
-              onChange={(e) => setState(e.target.value)}
-              className="py-6"
+              maxLength={2}
+              value={formData.state}
+              onChange={(e) => handleChange('state', e.target.value.toUpperCase())}
+              onBlur={() => handleBlur('state')}
+              className={`py-6 ${errors.state ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
             />
+            {errors.state && (
+              <div className="flex items-center mt-1 text-red-500 text-sm">
+                <AlertCircle className="h-4 w-4 mr-1" />
+                <span>{errors.state}</span>
+              </div>
+            )}
           </div>
 
           <div className="mb-4">
@@ -78,28 +234,38 @@ const PropertyAddressPage = () => {
             <Input
               id="aptUnit"
               placeholder="Apt/Unit"
-              value={aptUnit}
-              onChange={(e) => setAptUnit(e.target.value)}
+              value={formData.aptUnit}
+              onChange={(e) => handleChange('aptUnit', e.target.value)}
               className="py-6"
             />
           </div>
 
           <div className="mb-4">
-            <Label htmlFor="zipCode" className="block mb-2 text-gray-700">Zip Code</Label>
+            <Label htmlFor="zipCode" className="block mb-2 text-gray-700 flex items-center">
+              Zip Code <span className="text-red-500 ml-1">*</span>
+            </Label>
             <Input
               id="zipCode"
               placeholder="Zip Code"
-              value={zipCode}
-              onChange={(e) => setZipCode(e.target.value)}
-              className="py-6"
+              value={formData.zipCode}
+              onChange={(e) => handleChange('zipCode', e.target.value)}
+              onBlur={() => handleBlur('zipCode')}
+              className={`py-6 ${errors.zipCode ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
+              maxLength={10}
             />
+            {errors.zipCode && (
+              <div className="flex items-center mt-1 text-red-500 text-sm">
+                <AlertCircle className="h-4 w-4 mr-1" />
+                <span>{errors.zipCode}</span>
+              </div>
+            )}
           </div>
 
           <div className="mb-6 mt-8">
             <Label className="block mb-4 text-gray-700">
               If you occupy the property, will you set aside space within the property to operate your business? (e.g., daycare facility, medical office, beauty/barber shop)?
             </Label>
-            <RadioGroup value={businessSpace} onValueChange={setBusinessSpace} className="flex gap-8 mt-2">
+            <RadioGroup value={formData.businessSpace} onValueChange={(value) => setFormData(prev => ({ ...prev, businessSpace: value }))} className="flex gap-8 mt-2">
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="yes" id="business-yes" />
                 <Label htmlFor="business-yes">Yes</Label>
@@ -115,7 +281,7 @@ const PropertyAddressPage = () => {
             <Label className="block mb-4 text-gray-700">
               Do you want to add gift or grants you have been given or will receive for this loan?
             </Label>
-            <RadioGroup value={addGift} onValueChange={setAddGift} className="flex gap-8 mt-2">
+            <RadioGroup value={formData.addGift} onValueChange={(value) => setFormData(prev => ({ ...prev, addGift: value }))} className="flex gap-8 mt-2">
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="yes" id="gift-yes" />
                 <Label htmlFor="gift-yes">Yes</Label>
@@ -133,6 +299,7 @@ const PropertyAddressPage = () => {
               variant="outline" 
               className="bg-gray-200 hover:bg-gray-300 border-none rounded-full px-10 py-2"
               onClick={() => navigate('/property-found')}
+              disabled={isSubmitting}
             >
               Back
             </Button>
@@ -140,8 +307,9 @@ const PropertyAddressPage = () => {
             <Button 
               type="submit"
               className="bg-mloflo-blue hover:bg-blue-700 ml-4 rounded-full px-10 py-2"
+              disabled={isSubmitting}
             >
-              Next
+              {isSubmitting ? "Processing..." : "Next"}
             </Button>
           </div>
         </form>

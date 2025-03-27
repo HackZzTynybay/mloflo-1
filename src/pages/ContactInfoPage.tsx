@@ -5,18 +5,161 @@ import Layout from '../components/Layout';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from "@/components/ui/label";
+import { AlertCircle } from 'lucide-react';
+import { toast } from "@/components/ui/use-toast";
 
 const ContactInfoPage = () => {
   const navigate = useNavigate();
-  const [homePhone, setHomePhone] = useState('');
-  const [cellPhone, setCellPhone] = useState('');
-  const [workPhone, setWorkPhone] = useState('');
-  const [extension, setExtension] = useState('');
-  const [email, setEmail] = useState('');
+  const [formData, setFormData] = useState({
+    homePhone: '',
+    cellPhone: '',
+    workPhone: '',
+    extension: '',
+    email: ''
+  });
+  
+  const [errors, setErrors] = useState({
+    homePhone: '',
+    cellPhone: '',
+    workPhone: '',
+    extension: '',
+    email: ''
+  });
+  
+  const [touched, setTouched] = useState({
+    homePhone: false,
+    cellPhone: false,
+    workPhone: false,
+    extension: false,
+    email: false
+  });
+
+  const validatePhoneNumber = (value: string) => {
+    if (!value) return '';
+    
+    // Remove all non-numeric characters
+    const cleanedNumber = value.replace(/\D/g, '');
+    
+    // Phone number should be 10 digits
+    if (cleanedNumber.length !== 10) {
+      return 'Phone number must be 10 digits';
+    }
+    
+    return '';
+  };
+
+  const validateEmail = (value: string) => {
+    if (!value) return 'Email is required';
+    
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(value)) {
+      return 'Please enter a valid email address';
+    }
+    
+    return '';
+  };
+
+  const handleChange = (field: keyof typeof formData, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+    
+    if (touched[field]) {
+      validateField(field, value);
+    }
+  };
+
+  const validateField = (field: keyof typeof formData, value: string) => {
+    let error = '';
+    
+    switch (field) {
+      case 'email':
+        error = validateEmail(value);
+        break;
+      case 'homePhone':
+      case 'cellPhone':
+      case 'workPhone':
+        error = validatePhoneNumber(value);
+        break;
+      default:
+        break;
+    }
+    
+    setErrors(prev => ({ ...prev, [field]: error }));
+    return error;
+  };
+
+  const handleBlur = (field: keyof typeof formData) => {
+    setTouched(prev => ({ ...prev, [field]: true }));
+    validateField(field, formData[field]);
+  };
+
+  const formatPhoneNumber = (value: string) => {
+    // Remove all non-numeric characters
+    const cleaned = value.replace(/\D/g, '');
+    
+    // Format as (XXX) XXX-XXXX
+    if (cleaned.length >= 10) {
+      return `(${cleaned.slice(0, 3)}) ${cleaned.slice(3, 6)}-${cleaned.slice(6, 10)}`;
+    } else if (cleaned.length >= 6) {
+      return `(${cleaned.slice(0, 3)}) ${cleaned.slice(3, 6)}-${cleaned.slice(6)}`;
+    } else if (cleaned.length >= 3) {
+      return `(${cleaned.slice(0, 3)}) ${cleaned.slice(3)}`;
+    }
+    
+    return cleaned;
+  };
+
+  const handlePhoneChange = (field: 'homePhone' | 'cellPhone' | 'workPhone', e: React.ChangeEvent<HTMLInputElement>) => {
+    const formattedValue = formatPhoneNumber(e.target.value);
+    handleChange(field, formattedValue);
+  };
+
+  const validateForm = () => {
+    // Always require email and at least one phone number
+    const newErrors = { ...errors };
+    const hasAtLeastOnePhone = formData.homePhone || formData.cellPhone || formData.workPhone;
+    
+    newErrors.email = validateEmail(formData.email);
+    
+    if (!hasAtLeastOnePhone) {
+      // Highlight the first empty phone field
+      if (!formData.cellPhone) {
+        newErrors.cellPhone = 'At least one phone number is required';
+      } else if (!formData.homePhone) {
+        newErrors.homePhone = 'At least one phone number is required';
+      } else {
+        newErrors.workPhone = 'At least one phone number is required';
+      }
+    } else {
+      // Validate provided phone numbers
+      if (formData.homePhone) newErrors.homePhone = validatePhoneNumber(formData.homePhone);
+      if (formData.cellPhone) newErrors.cellPhone = validatePhoneNumber(formData.cellPhone);
+      if (formData.workPhone) newErrors.workPhone = validatePhoneNumber(formData.workPhone);
+    }
+    
+    setErrors(newErrors);
+    setTouched({
+      homePhone: true,
+      cellPhone: true,
+      workPhone: true,
+      extension: true,
+      email: true
+    });
+    
+    return !Object.values(newErrors).some(error => error);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate('/current-address');
+    
+    if (validateForm()) {
+      navigate('/current-address');
+    } else {
+      toast({
+        title: "Please fix the errors",
+        description: "Please correct the highlighted fields before continuing.",
+        variant: "destructive"
+      });
+    }
   };
 
   return (
@@ -32,36 +175,59 @@ const ContactInfoPage = () => {
         
         <form onSubmit={handleSubmit} className="w-full space-y-6">
           <div className="mb-4">
-            <Label htmlFor="homePhone">Home Phone</Label>
+            <Label htmlFor="cellPhone" className="flex items-center">
+              Cell Phone <span className="text-red-500 ml-1">*</span>
+            </Label>
             <Input
-              id="homePhone"
-              placeholder="Home Phone"
-              value={homePhone}
-              onChange={(e) => setHomePhone(e.target.value)}
-              className="mt-1"
+              id="cellPhone"
+              placeholder="(000) 000-0000"
+              value={formData.cellPhone}
+              onChange={(e) => handlePhoneChange('cellPhone', e)}
+              onBlur={() => handleBlur('cellPhone')}
+              className={`mt-1 ${errors.cellPhone ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
             />
+            {errors.cellPhone && (
+              <div className="flex items-center mt-1 text-red-500 text-sm">
+                <AlertCircle className="h-4 w-4 mr-1" />
+                <span>{errors.cellPhone}</span>
+              </div>
+            )}
           </div>
 
           <div className="mb-4">
-            <Label htmlFor="cellPhone">Cell Phone</Label>
+            <Label htmlFor="homePhone">Home Phone</Label>
             <Input
-              id="cellPhone"
-              placeholder="Cell Phone"
-              value={cellPhone}
-              onChange={(e) => setCellPhone(e.target.value)}
-              className="mt-1"
+              id="homePhone"
+              placeholder="(000) 000-0000"
+              value={formData.homePhone}
+              onChange={(e) => handlePhoneChange('homePhone', e)}
+              onBlur={() => handleBlur('homePhone')}
+              className={`mt-1 ${errors.homePhone ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
             />
+            {errors.homePhone && (
+              <div className="flex items-center mt-1 text-red-500 text-sm">
+                <AlertCircle className="h-4 w-4 mr-1" />
+                <span>{errors.homePhone}</span>
+              </div>
+            )}
           </div>
 
           <div className="mb-4">
             <Label htmlFor="workPhone">Work Phone</Label>
             <Input
               id="workPhone"
-              placeholder="Work Phone"
-              value={workPhone}
-              onChange={(e) => setWorkPhone(e.target.value)}
-              className="mt-1"
+              placeholder="(000) 000-0000"
+              value={formData.workPhone}
+              onChange={(e) => handlePhoneChange('workPhone', e)}
+              onBlur={() => handleBlur('workPhone')}
+              className={`mt-1 ${errors.workPhone ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
             />
+            {errors.workPhone && (
+              <div className="flex items-center mt-1 text-red-500 text-sm">
+                <AlertCircle className="h-4 w-4 mr-1" />
+                <span>{errors.workPhone}</span>
+              </div>
+            )}
           </div>
 
           <div className="mb-4">
@@ -69,22 +235,31 @@ const ContactInfoPage = () => {
             <Input
               id="extension"
               placeholder="Work Phone Extension"
-              value={extension}
-              onChange={(e) => setExtension(e.target.value)}
+              value={formData.extension}
+              onChange={(e) => handleChange('extension', e.target.value)}
               className="mt-1"
             />
           </div>
 
           <div className="mb-4">
-            <Label htmlFor="email">Email Address</Label>
+            <Label htmlFor="email" className="flex items-center">
+              Email Address <span className="text-red-500 ml-1">*</span>
+            </Label>
             <Input
               id="email"
               placeholder="Email Address"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="mt-1"
+              value={formData.email}
+              onChange={(e) => handleChange('email', e.target.value)}
+              onBlur={() => handleBlur('email')}
+              className={`mt-1 ${errors.email ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
               type="email"
             />
+            {errors.email && (
+              <div className="flex items-center mt-1 text-red-500 text-sm">
+                <AlertCircle className="h-4 w-4 mr-1" />
+                <span>{errors.email}</span>
+              </div>
+            )}
           </div>
 
           <div className="flex justify-center mt-10">

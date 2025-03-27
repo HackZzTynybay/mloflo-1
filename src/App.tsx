@@ -29,6 +29,7 @@ import ExistingMortgagePage from "./pages/ExistingMortgagePage";
 import MortgageBalancePage from "./pages/MortgageBalancePage";
 import AdditionalMortgagePage from "./pages/AdditionalMortgagePage";
 import AdditionalMortgageBalancePage from "./pages/AdditionalMortgageBalancePage";
+import BridgeLoanProceedsPage from "./pages/BridgeLoanProceedsPage";
 import PropertyValuePage from "./pages/PropertyValuePage";
 
 // Personal Information Pages
@@ -129,6 +130,7 @@ const App = () => (
             <Route path="/mortgage-balance" element={<MortgageBalancePage />} />
             <Route path="/additional-mortgage" element={<AdditionalMortgagePage />} />
             <Route path="/additional-mortgage-balance" element={<AdditionalMortgageBalancePage />} />
+            <Route path="/bridge-loan-proceeds" element={<BridgeLoanProceedsPage />} />
             <Route path="/property-value" element={<PropertyValuePage />} />
             
             {/* Personal Information Flow */}

@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 interface ProgressBarProps {
   currentStep: number;
@@ -7,7 +7,15 @@ interface ProgressBarProps {
 }
 
 const ProgressBar: React.FC<ProgressBarProps> = ({ currentStep, totalSteps }) => {
-  const progress = (currentStep / totalSteps) * 100;
+  const [animatedProgress, setAnimatedProgress] = useState(0);
+  
+  useEffect(() => {
+    // Calculate the target progress percentage
+    const targetProgress = (currentStep / totalSteps) * 100;
+    
+    // Start with current progress and animate to the target
+    setAnimatedProgress(targetProgress);
+  }, [currentStep, totalSteps]);
   
   return (
     <div className="w-full max-w-xl mx-auto my-4">
@@ -19,7 +27,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ currentStep, totalSteps }) =>
       <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
         <div 
           className="h-full bg-mloflo-blue transition-all duration-700 ease-in-out rounded-full"
-          style={{ width: `${progress}%` }}
+          style={{ width: `${animatedProgress}%` }}
         />
       </div>
     </div>

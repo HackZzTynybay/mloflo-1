@@ -1,17 +1,37 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, AlertCircle } from 'lucide-react';
+import { toast } from "@/components/ui/use-toast";
 
 const ReviewSubmitPage = () => {
   const navigate = useNavigate();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [agreement, setAgreement] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSubmit = () => {
+    if (!agreement) {
+      setError('You must accept the terms to continue');
+      toast({
+        title: "Agreement Required",
+        description: "Please accept the terms by checking the box before submitting your application",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    setError('');
+    setIsSubmitting(true);
+    
     // Here you would typically send all the collected data to your backend
-    navigate('/application-submitted');
+    setTimeout(() => {
+      navigate('/application-submitted');
+      setIsSubmitting(false);
+    }, 800);
   };
 
   return (
@@ -217,12 +237,24 @@ const ReviewSubmitPage = () => {
             <input 
               type="checkbox" 
               id="agreement" 
-              className="h-5 w-5 rounded border-gray-300 text-mloflo-blue focus:ring-mloflo-blue mt-1"
+              checked={agreement}
+              onChange={() => {
+                setAgreement(!agreement);
+                setError('');
+              }}
+              className={`h-5 w-5 rounded border-gray-300 ${error ? 'border-red-500' : 'text-mloflo-blue'} focus:ring-mloflo-blue mt-1`}
             />
-            <label htmlFor="agreement" className="text-sm text-gray-700">
+            <label htmlFor="agreement" className={`text-sm ${error ? 'text-red-500' : 'text-gray-700'}`}>
               By checking this box, I confirm that all the information provided is accurate and complete to the best of my knowledge. I authorize MloFlo to verify this information and understand that providing false information may result in the denial of my application.
             </label>
           </div>
+          
+          {error && (
+            <div className="flex items-center mt-1 mb-4 text-red-500 text-sm">
+              <AlertCircle className="h-4 w-4 mr-1" />
+              <span>{error}</span>
+            </div>
+          )}
         </div>
 
         <div className="flex justify-center mt-6">
@@ -231,6 +263,7 @@ const ReviewSubmitPage = () => {
             variant="outline" 
             className="bg-gray-200 hover:bg-gray-300 border-none rounded-full px-10 py-2"
             onClick={() => navigate('/declarations-page')}
+            disabled={isSubmitting}
           >
             Back
           </Button>
@@ -239,8 +272,9 @@ const ReviewSubmitPage = () => {
             type="button"
             className="bg-mloflo-blue hover:bg-blue-700 ml-4 rounded-full px-10 py-2"
             onClick={handleSubmit}
+            disabled={isSubmitting}
           >
-            Submit Application
+            {isSubmitting ? "Processing..." : "Submit Application"}
           </Button>
         </div>
       </div>

@@ -5,14 +5,17 @@ import Layout from '../components/Layout';
 import NumberSvg from '../components/NumberSvg';
 import { Button } from '@/components/ui/button';
 import { toast } from "@/components/ui/use-toast";
+import { AlertCircle } from 'lucide-react';
 
 const BorrowersPage = () => {
   const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
   
   const handleSelect = (number: number) => {
     setSelectedOption(number);
+    setError('');
   };
   
   const handleNext = () => {
@@ -24,6 +27,7 @@ const BorrowersPage = () => {
         setIsSubmitting(false);
       }, 300);
     } else {
+      setError('Please select the number of borrowers');
       toast({
         title: "Selection Required",
         description: "Please select the number of borrowers",
@@ -39,6 +43,13 @@ const BorrowersPage = () => {
           <h1 className="text-3xl font-bold mb-12 text-center">
             How many borrowers will fill the application?
           </h1>
+          
+          {error && (
+            <div className="flex items-center justify-center mb-4 text-red-500 text-sm">
+              <AlertCircle className="h-4 w-4 mr-1" />
+              <span>{error}</span>
+            </div>
+          )}
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             <div 

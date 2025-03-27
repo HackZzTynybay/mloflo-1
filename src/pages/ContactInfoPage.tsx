@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout';
 import { Input } from '@/components/ui/input';
@@ -10,6 +10,7 @@ import { toast } from "@/components/ui/use-toast";
 
 const ContactInfoPage = () => {
   const navigate = useNavigate();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     homePhone: '',
     cellPhone: '',
@@ -37,7 +38,7 @@ const ContactInfoPage = () => {
   const validatePhoneNumber = (value: string) => {
     if (!value) return '';
     
-    // Remove all non-numeric characters
+    // Remove all non-numeric characters to check length
     const cleanedNumber = value.replace(/\D/g, '');
     
     // Phone number should be 10 digits
@@ -59,7 +60,26 @@ const ContactInfoPage = () => {
     return '';
   };
 
+  const validateExtension = (value: string) => {
+    if (!value) return '';
+    
+    // Extension should only contain numbers
+    if (!/^\d+$/.test(value)) {
+      return 'Extension should only contain numbers';
+    }
+    
+    return '';
+  };
+
   const handleChange = (field: keyof typeof formData, value: string) => {
+    // Specific validation for extension - only allow numbers
+    if (field === 'extension') {
+      if (value === '' || /^\d*$/.test(value)) {
+        setFormData(prev => ({ ...prev, [field]: value }));
+      }
+      return;
+    }
+
     setFormData(prev => ({ ...prev, [field]: value }));
     
     if (touched[field]) {
@@ -79,6 +99,9 @@ const ContactInfoPage = () => {
       case 'workPhone':
         error = validatePhoneNumber(value);
         break;
+      case 'extension':
+        error = validateExtension(value);
+        break;
       default:
         break;
     }
@@ -89,6 +112,13 @@ const ContactInfoPage = () => {
 
   const handleBlur = (field: keyof typeof formData) => {
     setTouched(prev => ({ ...prev, [field]: true }));
+    
+    // Format phone numbers on blur
+    if (field === 'homePhone' || field === 'cellPhone' || field === 'workPhone') {
+      const formattedValue = formatPhoneNumber(formData[field]);
+      setFormData(prev => ({ ...prev, [field]: formattedValue }));
+    }
+    
     validateField(field, formData[field]);
   };
 
@@ -109,8 +139,11 @@ const ContactInfoPage = () => {
   };
 
   const handlePhoneChange = (field: 'homePhone' | 'cellPhone' | 'workPhone', e: React.ChangeEvent<HTMLInputElement>) => {
-    const formattedValue = formatPhoneNumber(e.target.value);
-    handleChange(field, formattedValue);
+    const input = e.target.value;
+    // Only allow digits, parentheses, spaces, and hyphens
+    if (input === '' || /^[\d()\-\s]*$/.test(input)) {
+      handleChange(field, input);
+    }
   };
 
   const validateForm = () => {
@@ -136,6 +169,10 @@ const ContactInfoPage = () => {
       if (formData.workPhone) newErrors.workPhone = validatePhoneNumber(formData.workPhone);
     }
     
+    if (formData.extension) {
+      newErrors.extension = validateExtension(formData.extension);
+    }
+    
     setErrors(newErrors);
     setTouched({
       homePhone: true,
@@ -152,7 +189,11 @@ const ContactInfoPage = () => {
     e.preventDefault();
     
     if (validateForm()) {
-      navigate('/current-address');
+      setIsSubmitting(true);
+      setTimeout(() => {
+        navigate('/current-address');
+        setIsSubmitting(false);
+      }, 500);
     } else {
       toast({
         title: "Please fix the errors",
@@ -237,8 +278,15 @@ const ContactInfoPage = () => {
               placeholder="Work Phone Extension"
               value={formData.extension}
               onChange={(e) => handleChange('extension', e.target.value)}
-              className="mt-1"
+              onBlur={() => handleBlur('extension')}
+              className={`mt-1 ${errors.extension ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
             />
+            {errors.extension && (
+              <div className="flex items-center mt-1 text-red-500 text-sm">
+                <AlertCircle className="h-4 w-4 mr-1" />
+                <span>{errors.extension}</span>
+              </div>
+            )}
           </div>
 
           <div className="mb-4">
@@ -268,6 +316,7 @@ const ContactInfoPage = () => {
               variant="outline" 
               className="bg-gray-200 hover:bg-gray-300 border-none rounded-full px-10 py-2"
               onClick={() => navigate('/personal-info')}
+              disabled={isSubmitting}
             >
               Back
             </Button>
@@ -275,8 +324,9 @@ const ContactInfoPage = () => {
             <Button 
               type="submit"
               className="bg-mloflo-blue hover:bg-blue-700 ml-4 rounded-full px-10 py-2"
+              disabled={isSubmitting}
             >
-              Next
+              {isSubmitting ? "Processing..." : "Next"}
             </Button>
           </div>
         </form>

@@ -89,6 +89,13 @@ import DemographicRacePage from "./pages/DemographicRacePage";
 import DemographicAsianPage from "./pages/DemographicAsianPage";
 import ApplicationCompletePage from "./pages/ApplicationCompletePage";
 
+// Declarations and Final Pages
+import DeclarationsPropertyPage from "./pages/DeclarationsPropertyPage";
+import DeclarationsFinancePage from "./pages/DeclarationsFinancePage";
+import ApplicationSummaryPage from "./pages/ApplicationSummaryPage";
+import ApplicationFinishPage from "./pages/ApplicationFinishPage";
+import ApplicationSubmittedPage from "./pages/ApplicationSubmittedPage";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -180,7 +187,14 @@ const App = () => (
             <Route path="/demographic-sex" element={<DemographicSexPage />} />
             <Route path="/demographic-race" element={<DemographicRacePage />} />
             <Route path="/demographic-asian" element={<DemographicAsianPage />} />
+            
+            {/* Declarations and Final Flow */}
+            <Route path="/declarations-property" element={<DeclarationsPropertyPage />} />
+            <Route path="/declarations-finance" element={<DeclarationsFinancePage />} />
+            <Route path="/application-summary" element={<ApplicationSummaryPage />} />
+            <Route path="/application-finish" element={<ApplicationFinishPage />} />
             <Route path="/application-complete" element={<ApplicationCompletePage />} />
+            <Route path="/application-submitted" element={<ApplicationSubmittedPage />} />
             
             {/* Catch-all route */}
             <Route path="*" element={<NotFound />} />

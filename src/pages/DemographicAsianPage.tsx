@@ -14,8 +14,8 @@ const DemographicAsianPage = () => {
   };
 
   const handleNext = () => {
-    // Navigate to the next page in the flow (after race)
-    navigate('/application-complete');
+    // Navigate to the declarations page
+    navigate('/declarations-property');
   };
 
   const handleBack = () => {

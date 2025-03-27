@@ -5,23 +5,40 @@ import Layout from '../components/Layout';
 import { Button } from '@/components/ui/button';
 import YesIcon from '../components/icons/YesIcon';
 import NoIcon from '../components/icons/NoIcon';
+import SelectionCard from '@/components/SelectionCard';
+import { toast } from "@/components/ui/use-toast";
 
 const DependentsQuestionPage = () => {
   const navigate = useNavigate();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [error, setError] = useState('');
 
   const handleOptionClick = (option: string) => {
     setSelectedOption(option);
+    setError('');
   };
 
   const handleNext = () => {
-    if (selectedOption) {
+    if (!selectedOption) {
+      setError('Please select an option');
+      toast({
+        title: "Selection Required",
+        description: "Please select Yes or No to continue",
+        variant: "destructive"
+      });
+      return;
+    }
+    
+    setIsSubmitting(true);
+    setTimeout(() => {
       if (selectedOption === 'yes') {
         navigate('/dependents-count');
       } else {
         navigate('/military-service');
       }
-    }
+      setIsSubmitting(false);
+    }, 500);
   };
 
   return (
@@ -35,22 +52,25 @@ const DependentsQuestionPage = () => {
           Do you have any dependents?
         </h1>
         
+        {error && (
+          <div className="mb-4 p-3 bg-red-100 text-red-800 rounded-md text-center w-full max-w-xl">
+            {error}
+          </div>
+        )}
+        
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-xl mx-auto mb-10">
-          <div 
-            className={`border rounded-lg p-6 flex flex-col items-center justify-center hover:shadow-md transition-all cursor-pointer ${selectedOption === 'yes' ? 'border-mloflo-blue bg-blue-50' : 'border-gray-200'}`}
+          <SelectionCard
+            title="Yes"
+            icon={<YesIcon selected={selectedOption === 'yes'} />}
+            selected={selectedOption === 'yes'}
             onClick={() => handleOptionClick('yes')}
-          >
-            <YesIcon />
-            <h3 className="text-lg font-medium mt-4">Yes</h3>
-          </div>
-
-          <div 
-            className={`border rounded-lg p-6 flex flex-col items-center justify-center hover:shadow-md transition-all cursor-pointer ${selectedOption === 'no' ? 'border-mloflo-blue bg-blue-50' : 'border-gray-200'}`}
+          />
+          <SelectionCard
+            title="No"
+            icon={<NoIcon selected={selectedOption === 'no'} />}
+            selected={selectedOption === 'no'}
             onClick={() => handleOptionClick('no')}
-          >
-            <NoIcon />
-            <h3 className="text-lg font-medium mt-4">No</h3>
-          </div>
+          />
         </div>
 
         <div className="flex justify-center mt-auto">
@@ -59,18 +79,18 @@ const DependentsQuestionPage = () => {
             variant="outline" 
             className="bg-gray-200 hover:bg-gray-300 border-none rounded-full px-10 py-2"
             onClick={() => navigate('/tax-filing-status')}
+            disabled={isSubmitting}
           >
             Back
           </Button>
           
-          {selectedOption && (
-            <Button 
-              className="bg-mloflo-blue hover:bg-blue-700 ml-4 rounded-full px-10 py-2"
-              onClick={handleNext}
-            >
-              Next
-            </Button>
-          )}
+          <Button 
+            className="bg-mloflo-blue hover:bg-blue-700 ml-4 rounded-full px-10 py-2"
+            onClick={handleNext}
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "Processing..." : "Next"}
+          </Button>
         </div>
       </div>
     </Layout>

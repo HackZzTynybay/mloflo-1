@@ -19,10 +19,9 @@ const AddAdditionalAssetsPage = () => {
 
   const handleNext = () => {
     if (selectedOption === 'yes') {
-      navigate('/assets');
+      navigate('/assets-selection');
     } else {
-      // This was previously navigating to /other-assets
-      // Now we'll show a success message and navigate to home
+      // Show success message and navigate to home
       toast({
         title: "Application Completed",
         description: "Your application has been successfully saved.",
@@ -35,7 +34,7 @@ const AddAdditionalAssetsPage = () => {
   return (
     <Layout 
       currentStep={5} 
-      totalSteps={5} // Updated to make this the final step
+      totalSteps={5} // This is the final step
       title="Assets"
     >
       <div className="flex flex-col items-center justify-center flex-grow w-full max-w-3xl mx-auto py-8">

@@ -68,6 +68,7 @@ import AddMoreIncomeSourcesPage from "./pages/AddMoreIncomeSourcesPage";
 import AssetsPage from "./pages/AssetsPage";
 import AssetDetailPage from "./pages/AssetDetailPage";
 import AddAdditionalAssetsPage from "./pages/AddAdditionalAssetsPage";
+import AssetsSelectionPage from "./pages/AssetsSelectionPage";
 
 const queryClient = new QueryClient();
 
@@ -141,6 +142,7 @@ const App = () => (
             <Route path="/assets" element={<AssetsPage />} />
             <Route path="/asset-detail/:assetId" element={<AssetDetailPage />} />
             <Route path="/add-additional-assets" element={<AddAdditionalAssetsPage />} />
+            <Route path="/assets-selection" element={<AssetsSelectionPage />} />
             
             {/* Catch-all route */}
             <Route path="*" element={<NotFound />} />

@@ -49,12 +49,13 @@ const ApplicationFinishPage = () => {
           Finish
         </h1>
         
-        <div className="space-y-10">
-          <div className="flex items-start space-x-3">
+        <div className="space-y-12">
+          <div className="flex items-start space-x-4">
             <Checkbox 
               id="eDisclosure" 
               checked={agreements.eDisclosure}
               onCheckedChange={(checked) => handleAgreementChange('eDisclosure', checked)}
+              className="mt-1"
             />
             <div>
               <Label htmlFor="eDisclosure" className="text-base font-medium">
@@ -63,11 +64,12 @@ const ApplicationFinishPage = () => {
             </div>
           </div>
           
-          <div className="flex items-start space-x-3">
+          <div className="flex items-start space-x-4">
             <Checkbox 
               id="creditCheck" 
               checked={agreements.creditCheck}
               onCheckedChange={(checked) => handleAgreementChange('creditCheck', checked)}
+              className="mt-1"
             />
             <div>
               <Label htmlFor="creditCheck" className="text-base font-medium">
@@ -78,6 +80,15 @@ const ApplicationFinishPage = () => {
         </div>
 
         <div className="flex justify-center mt-24">
+          <Button 
+            type="button"
+            variant="outline" 
+            className="bg-gray-200 hover:bg-gray-300 border-none rounded-full px-10 py-2 mr-4"
+            onClick={handleBack}
+          >
+            Back
+          </Button>
+          
           <Button 
             type="button"
             className={`bg-mloflo-blue hover:bg-blue-700 rounded-full px-12 py-3 ${!allAgreed ? 'opacity-70 pointer-events-none' : ''}`}

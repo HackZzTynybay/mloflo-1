@@ -55,15 +55,15 @@ const DeclarationsFinancePage = () => {
       title="Declarations" 
     >
       <div className="flex flex-col w-full max-w-3xl mx-auto py-8 px-4 sm:px-0">
-        <h1 className="text-2xl font-bold mb-6 text-center">
+        <h1 className="text-2xl font-bold mb-10 text-center">
           About your finances
         </h1>
         
-        <div className="space-y-8">
+        <div className="space-y-10">
           {/* Question A */}
-          <div className="space-y-2">
-            <p className="font-medium flex"><span className="mr-2">A.</span> Are you a co-signer or guarantor on any debt or loan that is not disclosed on this application?</p>
-            <RadioGroup className="flex flex-row space-x-4" onValueChange={(value) => handleRadioChange('coSignerOrGuarantor', value)}>
+          <div className="space-y-4">
+            <p className="font-medium flex"><span className="mr-3">A.</span> Are you a co-signer or guarantor on any debt or loan that is not disclosed on this application?</p>
+            <RadioGroup className="flex flex-row justify-end space-x-8" onValueChange={(value) => handleRadioChange('coSignerOrGuarantor', value)}>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="yes" id="coSignerYes" />
                 <Label htmlFor="coSignerYes">Yes</Label>
@@ -76,9 +76,9 @@ const DeclarationsFinancePage = () => {
           </div>
 
           {/* Question B */}
-          <div className="space-y-2">
-            <p className="font-medium flex"><span className="mr-2">B.</span> Are there any outstanding judgments against you?</p>
-            <RadioGroup className="flex flex-row space-x-4" onValueChange={(value) => handleRadioChange('outstandingJudgments', value)}>
+          <div className="space-y-4">
+            <p className="font-medium flex"><span className="mr-3">B.</span> Are there any outstanding judgments against you?</p>
+            <RadioGroup className="flex flex-row justify-end space-x-8" onValueChange={(value) => handleRadioChange('outstandingJudgments', value)}>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="yes" id="judgmentsYes" />
                 <Label htmlFor="judgmentsYes">Yes</Label>
@@ -91,9 +91,9 @@ const DeclarationsFinancePage = () => {
           </div>
 
           {/* Question C */}
-          <div className="space-y-2">
-            <p className="font-medium flex"><span className="mr-2">C.</span> Are you currently delinquent or in default on a Federal debt?</p>
-            <RadioGroup className="flex flex-row space-x-4" onValueChange={(value) => handleRadioChange('delinquentFederalDebt', value)}>
+          <div className="space-y-4">
+            <p className="font-medium flex"><span className="mr-3">C.</span> Are you currently delinquent or in default on a Federal debt?</p>
+            <RadioGroup className="flex flex-row justify-end space-x-8" onValueChange={(value) => handleRadioChange('delinquentFederalDebt', value)}>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="yes" id="delinquentYes" />
                 <Label htmlFor="delinquentYes">Yes</Label>
@@ -106,9 +106,9 @@ const DeclarationsFinancePage = () => {
           </div>
 
           {/* Question D */}
-          <div className="space-y-2">
-            <p className="font-medium flex"><span className="mr-2">D.</span> Are you a party to a lawsuit in which you potentially have any personal financial liability?</p>
-            <RadioGroup className="flex flex-row space-x-4" onValueChange={(value) => handleRadioChange('partyToLawsuit', value)}>
+          <div className="space-y-4">
+            <p className="font-medium flex"><span className="mr-3">D.</span> Are you a party to a lawsuit in which you potentially have any personal financial liability?</p>
+            <RadioGroup className="flex flex-row justify-end space-x-8" onValueChange={(value) => handleRadioChange('partyToLawsuit', value)}>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="yes" id="lawsuitYes" />
                 <Label htmlFor="lawsuitYes">Yes</Label>
@@ -121,9 +121,9 @@ const DeclarationsFinancePage = () => {
           </div>
 
           {/* Question E */}
-          <div className="space-y-2">
-            <p className="font-medium flex"><span className="mr-2">E.</span> Have you conveyed title to any property in lieu of foreclosure in the past 7 years?</p>
-            <RadioGroup className="flex flex-row space-x-4" onValueChange={(value) => handleRadioChange('conveyedProperty', value)}>
+          <div className="space-y-4">
+            <p className="font-medium flex"><span className="mr-3">E.</span> Have you conveyed title to any property in lieu of foreclosure in the past 7 years?</p>
+            <RadioGroup className="flex flex-row justify-end space-x-8" onValueChange={(value) => handleRadioChange('conveyedProperty', value)}>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="yes" id="conveyedYes" />
                 <Label htmlFor="conveyedYes">Yes</Label>
@@ -136,9 +136,9 @@ const DeclarationsFinancePage = () => {
           </div>
 
           {/* Question F */}
-          <div className="space-y-2">
-            <p className="font-medium flex"><span className="mr-2">F.</span> Within the past 7 years, have you completed a pre-foreclosure sale or short sale, whereby the property was sold to a third party and the Lender agreed to accept less than the outstanding mortgage balance due?</p>
-            <RadioGroup className="flex flex-row space-x-4" onValueChange={(value) => handleRadioChange('preForeclosureSale', value)}>
+          <div className="space-y-4">
+            <p className="font-medium flex"><span className="mr-3">F.</span> Within the past 7 years, have you completed a pre-foreclosure sale or short sale, whereby the property was sold to a third party and the Lender agreed to accept less than the outstanding mortgage balance due?</p>
+            <RadioGroup className="flex flex-row justify-end space-x-8" onValueChange={(value) => handleRadioChange('preForeclosureSale', value)}>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="yes" id="preForeclosureYes" />
                 <Label htmlFor="preForeclosureYes">Yes</Label>
@@ -151,9 +151,9 @@ const DeclarationsFinancePage = () => {
           </div>
 
           {/* Question G */}
-          <div className="space-y-2">
-            <p className="font-medium flex"><span className="mr-2">G.</span> Have you had property foreclosed upon in the last 7 years?</p>
-            <RadioGroup className="flex flex-row space-x-4" onValueChange={(value) => handleRadioChange('propertyForeclosed', value)}>
+          <div className="space-y-4">
+            <p className="font-medium flex"><span className="mr-3">G.</span> Have you had property foreclosed upon in the last 7 years?</p>
+            <RadioGroup className="flex flex-row justify-end space-x-8" onValueChange={(value) => handleRadioChange('propertyForeclosed', value)}>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="yes" id="foreclosedYes" />
                 <Label htmlFor="foreclosedYes">Yes</Label>
@@ -166,9 +166,9 @@ const DeclarationsFinancePage = () => {
           </div>
 
           {/* Question H */}
-          <div className="space-y-2">
-            <p className="font-medium flex"><span className="mr-2">H.</span> Have you declared bankruptcy within the past 7 years?</p>
-            <RadioGroup className="flex flex-row space-x-4" onValueChange={(value) => handleRadioChange('declaredBankruptcy', value)}>
+          <div className="space-y-4">
+            <p className="font-medium flex"><span className="mr-3">H.</span> Have you declared bankruptcy within the past 7 years?</p>
+            <RadioGroup className="flex flex-row justify-end space-x-8" onValueChange={(value) => handleRadioChange('declaredBankruptcy', value)}>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="yes" id="bankruptcyYes" />
                 <Label htmlFor="bankruptcyYes">Yes</Label>
@@ -180,9 +180,9 @@ const DeclarationsFinancePage = () => {
             </RadioGroup>
 
             {formData.declaredBankruptcy && (
-              <div className="mt-4">
-                <p className="font-medium">Identify the type(s) of bankruptcy:</p>
-                <div className="flex flex-wrap gap-4 mt-2">
+              <div className="mt-6 ml-6">
+                <p className="font-medium mb-4">Identify the type(s) of bankruptcy:</p>
+                <div className="flex flex-wrap gap-6 mt-2">
                   <div className="flex items-center space-x-2">
                     <Checkbox 
                       id="chapter7" 
@@ -221,7 +221,7 @@ const DeclarationsFinancePage = () => {
           </div>
         </div>
 
-        <div className="flex justify-center mt-10 space-x-4">
+        <div className="flex justify-center mt-16 space-x-4">
           <Button 
             type="button"
             variant="outline" 

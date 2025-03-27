@@ -46,15 +46,15 @@ const DeclarationsPropertyPage = () => {
       title="Declarations" 
     >
       <div className="flex flex-col w-full max-w-3xl mx-auto py-8 px-4 sm:px-0">
-        <h1 className="text-2xl font-bold mb-6 text-center">
+        <h1 className="text-2xl font-bold mb-10 text-center">
           About this property and your money with this loan
         </h1>
         
-        <div className="space-y-8">
+        <div className="space-y-10">
           {/* Question A */}
-          <div className="space-y-2">
-            <p className="font-medium flex"><span className="mr-2">A.</span> Will you occupy the property as your primary residence?</p>
-            <RadioGroup className="flex flex-row space-x-4" onValueChange={(value) => handleRadioChange('occupyAsPrimary', value)}>
+          <div className="space-y-4">
+            <p className="font-medium flex"><span className="mr-3">A.</span> Will you occupy the property as your primary residence?</p>
+            <RadioGroup className="flex flex-row justify-end space-x-8" onValueChange={(value) => handleRadioChange('occupyAsPrimary', value)}>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="yes" id="occupyYes" />
                 <Label htmlFor="occupyYes">Yes</Label>
@@ -67,9 +67,9 @@ const DeclarationsPropertyPage = () => {
           </div>
 
           {/* Question about ownership interest */}
-          <div className="space-y-2">
+          <div className="space-y-4">
             <p className="font-medium">Have you had an ownership interest in another property in the last three years?</p>
-            <RadioGroup className="flex flex-row space-x-4" onValueChange={(value) => handleRadioChange('ownershipInterest', value)}>
+            <RadioGroup className="flex flex-row justify-end space-x-8" onValueChange={(value) => handleRadioChange('ownershipInterest', value)}>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="yes" id="ownershipYes" />
                 <Label htmlFor="ownershipYes">Yes</Label>
@@ -82,7 +82,7 @@ const DeclarationsPropertyPage = () => {
           </div>
 
           {/* Property Type */}
-          <div className="space-y-2">
+          <div className="space-y-4">
             <Label htmlFor="propertyType">Type of Property</Label>
             <Select onValueChange={(value) => handleInputChange('propertyType', value)}>
               <SelectTrigger id="propertyType" className="w-full">
@@ -97,7 +97,7 @@ const DeclarationsPropertyPage = () => {
           </div>
 
           {/* Hold Title */}
-          <div className="space-y-2">
+          <div className="space-y-4">
             <Label htmlFor="holdTitle">How did you hold title to the property?</Label>
             <Select onValueChange={(value) => handleInputChange('holdTitle', value)}>
               <SelectTrigger id="holdTitle" className="w-full">
@@ -112,9 +112,9 @@ const DeclarationsPropertyPage = () => {
           </div>
 
           {/* Question B */}
-          <div className="space-y-2">
-            <p className="font-medium flex"><span className="mr-2">B.</span> If this is a Purchase Transaction: Do you have a family relationship or business affiliation with the seller of the property?</p>
-            <RadioGroup className="flex flex-row space-x-4" onValueChange={(value) => handleRadioChange('familyRelationship', value)}>
+          <div className="space-y-4">
+            <p className="font-medium flex"><span className="mr-3">B.</span> If this is a Purchase Transaction: Do you have a family relationship or business affiliation with the seller of the property?</p>
+            <RadioGroup className="flex flex-row justify-end space-x-8" onValueChange={(value) => handleRadioChange('familyRelationship', value)}>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="yes" id="familyYes" />
                 <Label htmlFor="familyYes">Yes</Label>
@@ -127,9 +127,9 @@ const DeclarationsPropertyPage = () => {
           </div>
 
           {/* Question C */}
-          <div className="space-y-2">
-            <p className="font-medium flex"><span className="mr-2">C.</span> Are you borrowing any money for this real estate transaction (e.g., money for your closing costs or down payment) or obtaining any money from another party, such as the seller or realtor, that you have not disclosed on this loan application?</p>
-            <RadioGroup className="flex flex-row space-x-4" onValueChange={(value) => handleRadioChange('borrowingMoney', value)}>
+          <div className="space-y-4">
+            <p className="font-medium flex"><span className="mr-3">C.</span> Are you borrowing any money for this real estate transaction (e.g., money for your closing costs or down payment) or obtaining any money from another party, such as the seller or realtor, that you have not disclosed on this loan application?</p>
+            <RadioGroup className="flex flex-row justify-end space-x-8" onValueChange={(value) => handleRadioChange('borrowingMoney', value)}>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="yes" id="borrowingYes" />
                 <Label htmlFor="borrowingYes">Yes</Label>
@@ -158,9 +158,9 @@ const DeclarationsPropertyPage = () => {
           </div>
 
           {/* Question D - Part 1 */}
-          <div className="space-y-2">
-            <p className="font-medium flex"><span className="mr-2">D.</span> (1) Have you or will you be applying for a mortgage loan on another property (not the property securing this loan) on or before closing this transaction that is not disclosed on this loan application?</p>
-            <RadioGroup className="flex flex-row space-x-4" onValueChange={(value) => handleRadioChange('mortgageLoanProperty', value)}>
+          <div className="space-y-4">
+            <p className="font-medium flex"><span className="mr-3">D.</span> (1) Have you or will you be applying for a mortgage loan on another property (not the property securing this loan) on or before closing this transaction that is not disclosed on this loan application?</p>
+            <RadioGroup className="flex flex-row justify-end space-x-8" onValueChange={(value) => handleRadioChange('mortgageLoanProperty', value)}>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="yes" id="mortgageYes" />
                 <Label htmlFor="mortgageYes">Yes</Label>
@@ -173,9 +173,9 @@ const DeclarationsPropertyPage = () => {
           </div>
 
           {/* Question D - Part 2 */}
-          <div className="space-y-2">
+          <div className="space-y-4">
             <p className="font-medium">(2) Have you or will you be applying for any new credit (e.g., installment loan, credit card, etc.) on or before closing this loan that is not disclosed on this application?</p>
-            <RadioGroup className="flex flex-row space-x-4" onValueChange={(value) => handleRadioChange('newCreditApplying', value)}>
+            <RadioGroup className="flex flex-row justify-end space-x-8" onValueChange={(value) => handleRadioChange('newCreditApplying', value)}>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="yes" id="newCreditYes" />
                 <Label htmlFor="newCreditYes">Yes</Label>
@@ -188,9 +188,9 @@ const DeclarationsPropertyPage = () => {
           </div>
 
           {/* Question E */}
-          <div className="space-y-2">
-            <p className="font-medium flex"><span className="mr-2">E.</span> Will this property be subject to a lien that could take priority over the first mortgage lien, such as a clean energy lien paid through your property taxes (e.g., the Property Assessed Clean Energy Program)?</p>
-            <RadioGroup className="flex flex-row space-x-4" onValueChange={(value) => handleRadioChange('propertySubjectToLien', value)}>
+          <div className="space-y-4">
+            <p className="font-medium flex"><span className="mr-3">E.</span> Will this property be subject to a lien that could take priority over the first mortgage lien, such as a clean energy lien paid through your property taxes (e.g., the Property Assessed Clean Energy Program)?</p>
+            <RadioGroup className="flex flex-row justify-end space-x-8" onValueChange={(value) => handleRadioChange('propertySubjectToLien', value)}>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="yes" id="lienYes" />
                 <Label htmlFor="lienYes">Yes</Label>
@@ -203,7 +203,7 @@ const DeclarationsPropertyPage = () => {
           </div>
         </div>
 
-        <div className="flex justify-center mt-10 space-x-4">
+        <div className="flex justify-center mt-16 space-x-4">
           <Button 
             type="button"
             variant="outline" 

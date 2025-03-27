@@ -70,6 +70,25 @@ import AssetDetailPage from "./pages/AssetDetailPage";
 import AddAdditionalAssetsPage from "./pages/AddAdditionalAssetsPage";
 import AssetsSelectionPage from "./pages/AssetsSelectionPage";
 
+// New Asset Detail Flow
+import AssetCashValuePage from "./pages/AssetCashValuePage";
+import AssetEquityValuePage from "./pages/AssetEquityValuePage";
+
+// Real Estate Pages
+import RealEstateAdditionalPage from "./pages/RealEstateAdditionalPage";
+import RealEstatePrimaryPage from "./pages/RealEstatePrimaryPage";
+import RealEstateSubjectPage from "./pages/RealEstateSubjectPage";
+import PropertyDetailsPage from "./pages/PropertyDetailsPage";
+
+// Demographic Pages
+import DemographicEthnicityPage from "./pages/DemographicEthnicityPage";
+import DemographicHispanicPage from "./pages/DemographicHispanicPage";
+import DemographicHispanicOtherPage from "./pages/DemographicHispanicOtherPage";
+import DemographicSexPage from "./pages/DemographicSexPage";
+import DemographicRacePage from "./pages/DemographicRacePage";
+import DemographicAsianPage from "./pages/DemographicAsianPage";
+import ApplicationCompletePage from "./pages/ApplicationCompletePage";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -143,6 +162,25 @@ const App = () => (
             <Route path="/asset-detail/:assetId" element={<AssetDetailPage />} />
             <Route path="/add-additional-assets" element={<AddAdditionalAssetsPage />} />
             <Route path="/assets-selection" element={<AssetsSelectionPage />} />
+            
+            {/* New Asset Detail Flow */}
+            <Route path="/asset-cash-value" element={<AssetCashValuePage />} />
+            <Route path="/asset-equity-value" element={<AssetEquityValuePage />} />
+            
+            {/* Real Estate Flow */}
+            <Route path="/real-estate-additional" element={<RealEstateAdditionalPage />} />
+            <Route path="/real-estate-primary" element={<RealEstatePrimaryPage />} />
+            <Route path="/real-estate-subject" element={<RealEstateSubjectPage />} />
+            <Route path="/property-details" element={<PropertyDetailsPage />} />
+            
+            {/* Demographic Flow */}
+            <Route path="/demographic-ethnicity" element={<DemographicEthnicityPage />} />
+            <Route path="/demographic-hispanic" element={<DemographicHispanicPage />} />
+            <Route path="/demographic-hispanic-other" element={<DemographicHispanicOtherPage />} />
+            <Route path="/demographic-sex" element={<DemographicSexPage />} />
+            <Route path="/demographic-race" element={<DemographicRacePage />} />
+            <Route path="/demographic-asian" element={<DemographicAsianPage />} />
+            <Route path="/application-complete" element={<ApplicationCompletePage />} />
             
             {/* Catch-all route */}
             <Route path="*" element={<NotFound />} />

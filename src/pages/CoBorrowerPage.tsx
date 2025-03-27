@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Layout from '../components/Layout';
@@ -121,7 +120,10 @@ const CoBorrowerPage = () => {
     
     // Update validation errors if touched
     if (touched[index]) {
-      validateField(index, field, value.toString());
+      // Only validate fields that exist in ValidationErrors
+      if (field === 'firstName' || field === 'lastName' || field === 'phone' || field === 'email') {
+        validateField(index, field as keyof ValidationErrors, value.toString());
+      }
     }
   };
   

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout';
@@ -6,28 +5,43 @@ import { Button } from '@/components/ui/button';
 
 const Index = () => {
   const navigate = useNavigate();
-
+  
   return (
-    <Layout 
-      currentStep={1} 
-      totalSteps={10} 
-      title="Welcome"
-    >
-      <div className="flex flex-col items-center justify-center flex-grow w-full max-w-3xl mx-auto py-8">
-        <h1 className="text-2xl font-bold mb-10 text-center">
-          Welcome to MLOFlo Mortgage Application
-        </h1>
-        
-        <p className="text-center mb-8">
-          Start your mortgage application process by exploring the available options below.
-        </p>
-        
-        <div className="flex flex-col space-y-4 w-full max-w-md">
+    <Layout>
+      <div className="flex flex-col items-center justify-center flex-grow py-8">
+        <div className="w-full max-w-2xl mx-auto text-center">
+          <div className="mb-8">
+            <svg width="437" height="259" viewBox="0 0 437 259" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-64 h-48 mx-auto">
+              <circle cx="93.4444" cy="93.4444" r="91.9444" stroke="#344AD5" strokeWidth="3"/>
+              <circle cx="342.933" cy="126.105" r="91.9444" stroke="#344AD5" strokeWidth="3"/>
+              <path d="M14.9688 141.076C25.7043 118.698 56.3383 75.3019 92.9903 80.7452C103.423 81.5012 128.735 89.4545 146.517 115.22C164.298 140.985 183.864 149.241 191.424 150.148C196.112 150.602 206.847 149.513 212.291 141.529C219.095 131.55 230.889 135.632 230.435 145.158C230.221 149.661 228.891 152.644 228.172 155.591M191.424 210.932C179.086 201.497 190.215 196.719 197.321 195.509C203.37 194.753 218.46 191.971 230.435 186.891C242.411 181.81 235.425 171.77 230.435 167.385C227.326 162.123 227.369 158.879 228.172 155.591M191.424 210.932C189.61 212.444 186.162 217.192 186.888 224.087M191.424 210.932C199.287 213.2 218.097 216.376 230.435 210.932M186.888 224.087C163.3 224.389 108.232 210.025 76.6602 150.148M186.888 224.087C189.429 229.167 197.019 233.764 200.497 235.427M253.116 141.529C268.992 128.677 309.818 104.605 346.107 111.137C382.396 117.669 416.568 142.285 429.118 153.777M408.252 167.385C404.595 173.255 391.263 185.469 363.344 200.216M207.754 248.129C226.806 264.005 209.569 259.469 300.292 227.262C326.681 217.894 347.393 208.642 363.344 200.216M207.754 248.129C214.105 249.036 228.167 249.308 233.61 243.139M207.754 248.129C204.579 246.616 198.682 241.959 200.497 235.427M200.497 235.427C208.359 236.032 225.355 236.244 230.435 232.252M228.172 155.591C235.126 151.358 257.471 143.344 291.219 145.158C296.499 145.442 301.329 145.463 305.735 145.279M343.839 133.364C340.905 137.318 329.493 144.285 305.735 145.279M305.735 145.279C315.11 160.019 339.756 191.644 363.344 200.216" stroke="#344AD5" strokeWidth="3"/>
+              <path d="M324.787 60.3302C320.07 61.7817 321.612 65.1687 322.973 66.6808C325.241 68.0411 330.322 71.2155 332.499 73.03C334.676 74.8444 332.499 77.1125 331.138 78.0197C328.598 83.1002 330.08 87.9992 331.138 89.8137C337.67 97.7973 343.839 94.9546 346.107 92.5354C352.639 87.092 348.829 78.4743 346.107 74.8458C340.966 69.4024 329.505 58.8786 324.787 60.3302Z" fill="#344AD5"/>
+              <path d="M42.6399 44.4523C40.4625 57.8793 46.5712 62.4457 49.8977 63.0505C55.704 66.3166 65.3205 60.1776 69.403 56.6998C86.4589 43.9986 88.3036 31.4487 87.094 26.7614C85.6424 14.4231 73.1832 16.1771 67.135 18.5964C59.8772 21.6205 44.8172 31.0254 42.6399 44.4523Z" fill="#344AD5"/>
+              <path d="M324.787 60.3302C320.07 61.7817 321.612 65.1687 322.973 66.6808C325.241 68.0411 330.322 71.2155 332.499 73.03C334.676 74.8444 332.499 77.1125 331.138 78.0197C328.598 83.1002 330.08 87.9992 331.138 89.8137C337.67 97.7973 343.839 94.9546 346.107 92.5354C352.639 87.092 348.829 78.4743 346.107 74.8458C340.966 69.4024 329.505 58.8786 324.787 60.3302Z" stroke="#344AD5" strokeWidth="5"/>
+              <path d="M42.6399 44.4523C40.4625 57.8793 46.5712 62.4457 49.8977 63.0505C55.704 66.3166 65.3205 60.1776 69.403 56.6998C86.4589 43.9986 88.3036 31.4487 87.094 26.7614C85.6424 14.4231 73.1832 16.1771 67.135 18.5964C59.8772 21.6205 44.8172 31.0254 42.6399 44.4523Z" stroke="#344AD5" strokeWidth="5"/>
+              <circle cx="205.941" cy="32.6602" r="3.62891" fill="#344AD5"/>
+              <circle cx="222.271" cy="32.6602" r="3.62891" fill="#344AD5"/>
+              <circle cx="238.602" cy="32.6602" r="3.62891" fill="#344AD5"/>
+            </svg>
+          </div>
+          
+          <h1 className="text-3xl font-bold mb-4">Hi Jess Morgan</h1>
+          
+          <p className="text-center mb-2 text-gray-700">
+            Your home ownership journey starts with Loan Application.
+          </p>
+          <p className="text-center mb-6 text-gray-700 max-w-xl mx-auto">
+            We are excited to help you with the purchase or refinance of your home. Please take a
+            few minutes to fill out the mortgage application in full so we can learn a little more
+            about you and your goals. Thank you for choosing us for your mortgage needs and we
+            look forward to helping you.
+          </p>
+          
           <Button 
-            className="bg-mloflo-blue hover:bg-blue-700 rounded-full px-10 py-6 text-lg"
-            onClick={() => navigate('/assets')}
+            onClick={() => navigate('/borrowers')}
+            className="bg-mloflo-blue hover:bg-blue-700 text-white rounded-full px-6 py-2 mt-6"
           >
-            Start Application
+            Next
           </Button>
         </div>
       </div>

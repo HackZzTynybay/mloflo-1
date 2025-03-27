@@ -6,10 +6,12 @@ import { Button } from '@/components/ui/button';
 import YesIcon from '@/components/icons/YesIcon';
 import NoIcon from '@/components/icons/NoIcon';
 import SelectionCard from '@/components/SelectionCard';
+import { useToast } from '@/components/ui/use-toast';
 
 const AddAdditionalAssetsPage = () => {
   const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const { toast } = useToast();
 
   const handleOptionSelect = (option: string) => {
     setSelectedOption(option);
@@ -19,14 +21,21 @@ const AddAdditionalAssetsPage = () => {
     if (selectedOption === 'yes') {
       navigate('/assets');
     } else {
-      navigate('/other-assets');
+      // This was previously navigating to /other-assets
+      // Now we'll show a success message and navigate to home
+      toast({
+        title: "Application Completed",
+        description: "Your application has been successfully saved.",
+        duration: 5000,
+      });
+      navigate('/');
     }
   };
 
   return (
     <Layout 
       currentStep={5} 
-      totalSteps={10} 
+      totalSteps={5} // Updated to make this the final step
       title="Assets"
     >
       <div className="flex flex-col items-center justify-center flex-grow w-full max-w-3xl mx-auto py-8">
@@ -65,7 +74,7 @@ const AddAdditionalAssetsPage = () => {
               className="bg-mloflo-blue hover:bg-blue-700 ml-4 rounded-full px-10 py-2"
               onClick={handleNext}
             >
-              Next
+              {selectedOption === 'no' ? 'Complete Application' : 'Next'}
             </Button>
           )}
         </div>

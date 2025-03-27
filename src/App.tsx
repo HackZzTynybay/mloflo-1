@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -63,16 +64,10 @@ import IncomeSourcesPage from "./pages/IncomeSourcesPage";
 import ChildSupportDetailsPage from "./pages/ChildSupportDetailsPage";
 import AddMoreIncomeSourcesPage from "./pages/AddMoreIncomeSourcesPage";
 
-// Asset & Financial Pages
+// Asset Pages
 import AssetsPage from "./pages/AssetsPage";
 import AssetDetailPage from "./pages/AssetDetailPage";
 import AddAdditionalAssetsPage from "./pages/AddAdditionalAssetsPage";
-import OtherAssetsPage from "./pages/OtherAssetsPage";
-import AssetsInformationPage from "./pages/AssetsInformationPage";
-
-// Final Pages
-import DeclarationsPage from "./pages/DeclarationsPage";
-import ReviewSubmitPage from "./pages/ReviewSubmitPage";
 
 const queryClient = new QueryClient();
 
@@ -146,13 +141,7 @@ const App = () => (
             <Route path="/assets" element={<AssetsPage />} />
             <Route path="/asset-detail/:assetId" element={<AssetDetailPage />} />
             <Route path="/add-additional-assets" element={<AddAdditionalAssetsPage />} />
-            <Route path="/other-assets" element={<OtherAssetsPage />} />
-            <Route path="/assets-information" element={<AssetsInformationPage />} />
             
-            {/* Final Flow */}
-            <Route path="/declarations-page" element={<DeclarationsPage />} />
-            <Route path="/review-submit" element={<ReviewSubmitPage />} />
-
             {/* Catch-all route */}
             <Route path="*" element={<NotFound />} />
           </Routes>
